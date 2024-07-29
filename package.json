@@ -7,7 +7,7 @@
   "type": "module",
   "scripts": {
     "dev": "npx vite",
-    "start": "cd ./dist  & npm start",
+    "start": "node ./dist/index.js",
     "start:local": "npx vite preview",
     "build": "tsc && vite build --outDir dist/dist",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
