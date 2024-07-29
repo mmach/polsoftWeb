@@ -8,10 +8,10 @@ const fs = require('fs');
 
 dotenv.config()
 
-fs.readFile('./dist/dist/index.html', (result, data) => {
+fs.readFile('./dist/index.html', (result, data) => {
     const $ = cheerio.load(data.toString())
 
-    fs.writeFile('./dist/dist/index.html', $.html(), (err) => { })
+    fs.writeFile('./dist/index.html', $.html(), (err) => { })
 
 })
 //const $ = cheerio.load('<h2 class="title">Hello world</h2>');
@@ -31,7 +31,7 @@ app.use(express.static(path.join(__dirname, 'webcomponent')));
 // Handles any requests that don't match the ones above
 //app.use(fallback('/www_build/index.html', { root }))
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname + '/dist/dist/index.html'));
+    res.sendFile(path.join(__dirname + '/dist/index.html'));
 });
 
 

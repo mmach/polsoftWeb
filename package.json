@@ -9,7 +9,7 @@
     "dev": "npx vite",
     "start": "node ./index.cjs",
     "start:local": "npx vite preview",
-    "build": "tsc && vite build --outDir dist/dist",
+    "build": "tsc && vite build ",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
     "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
