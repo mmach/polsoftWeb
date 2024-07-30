@@ -48,7 +48,7 @@ export default function RunProgram() {
         <WebsocketContext workId={currentRun.id}>
           <ProgramView />
           <Terminal name='Program Output' colorMode={ColorMode.Dark} onInput={terminalInput => console.log(`New terminal input received: '${terminalInput}'`)}>
-            {historyList.map(i => <TerminalOutput><Typewriter text={i.Output} delay={1} /></TerminalOutput>)}
+            {historyList.map(i => <TerminalOutput key={i.Id}><Typewriter text={i.Output} delay={1} /></TerminalOutput>)}
           </Terminal>
         </WebsocketContext>
       </Box>

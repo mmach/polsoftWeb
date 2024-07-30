@@ -16,7 +16,7 @@ type Prop = {
 
 export const WebsocketContext = ({ children, workId }: Prop) => {
 
-    const { sendMessage, lastMessage, readyState } = useWebSocket(`wss://polsoft2000api.azurewebsites.net/ws?workId=${workId}`);
+    const { lastMessage } = useWebSocket(`wss://polsoft2000api.azurewebsites.net/ws?workId=${workId}`);
     const setCurrentStep = useSetAtom(currentStepAtom);
     const setHistoryAtom = useSetAtom(historyAtom);
     const [history] = useAtom(historyAtom);
