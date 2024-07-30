@@ -2,10 +2,13 @@ import { useRef } from 'react';
 
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 import { alpha, useTheme } from '@mui/material/styles';
+
+import { paths } from 'src/routes/paths';
 
 import { useResponsive } from 'src/hooks/use-responsive';
 import { useBoundingClientRect } from 'src/hooks/use-bounding-client-rect';
@@ -14,6 +17,7 @@ import { bgGradient } from 'src/theme/css';
 import { HEADER } from 'src/layouts/config-layout';
 
 import Image from 'src/components/image';
+import Iconify from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
 
@@ -53,23 +57,34 @@ export default function HomeHero() {
               }}
             >
               <Typography variant="h1">
-                Create Your <br /> Website Today with
+                Create Your <br /> Application Today with
                 <Box component="span" sx={{ color: 'primary.main' }}>
-                  {` ZONE`}
+                  {` AppZone `}
                 </Box>
               </Typography>
 
               <Typography sx={{ color: 'text.secondary' }}>
-                The ZONE is built on top of MUI, a powerful library that provides flexible,
-                customizable, and easy-to-use components.
+              AppZone is an innovative platform that transforms diagrams into fully functional applications. It provides developers with flexible, customizable, and easy-to-use tools to streamline the app-building process.
               </Typography>
+
+              <Button
+                color="inherit"
+                size="large"
+                variant="contained"
+                endIcon={<Iconify icon="carbon:launch" />}
+                target="_blank"
+                rel="noopener"
+                href={paths.figmaPreview}
+              >
+                Go to AppZone Builder
+              </Button>
 
               <Stack spacing={3}>
                 <Typography variant="overline" sx={{ opacity: 0.48 }}>
                   AVAILABLE FOR
                 </Typography>
                 <Stack direction="row" spacing={2.5}>
-                  {['js', 'ts', 'figma', 'nextjs', 'vite'].map((icon) => (
+                  {['python', 'js', 'ts'].map((icon) => (
                     <Box
                       key={icon}
                       component="img"

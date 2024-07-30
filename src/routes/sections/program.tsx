@@ -1,9 +1,11 @@
 import { lazy } from 'react';
 
-import MainLayout from 'src/layouts/main';
+import AuthLayout from 'src/layouts/auth';
 import CreateOrUpdateProgramPage from 'src/pages/programs/creatProgram';
 import DashboardProgramPage from 'src/pages/programs/dashboard';
 import EmptyProgramListScreen from 'src/pages/programs/empty';
+
+import ProgramView from 'src/sections/programs/program-view';
 
 const ProgramsPage = lazy(() => import('src/pages/programs/index'));
 
@@ -12,22 +14,18 @@ export const programRoutes = [
     path: 'programs',
 
     element: (
-      <MainLayout>
+      <AuthLayout>
         <ProgramsPage />
-      </MainLayout>
+      </AuthLayout>
     ),
     children: [
       {
-        element: (
-          <EmptyProgramListScreen />
-        ),
+        element: <EmptyProgramListScreen />,
         index: true,
       },
       {
         path: 'create',
-        element: (
-          <CreateOrUpdateProgramPage />
-        )
+        element: <CreateOrUpdateProgramPage />,
       },
       {
         path: ':id',
@@ -36,6 +34,12 @@ export const programRoutes = [
         ),
         children: [
           {
+            index: true,
+            element: (
+              <ProgramView />
+            )
+          },
+          {
             path: 'edit',
             element: (
               <CreateOrUpdateProgramPage />
@@ -43,6 +47,7 @@ export const programRoutes = [
           }
         ]
       },
+
     ],
   },
 ];

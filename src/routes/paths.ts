@@ -25,4 +25,5 @@ export const paths = {
   login: '/auth/login',
   register: '/auth/register',
   programs: '/programs',
+  figmaPreview: 'https://www.figma.com/design/lVKuk7980bLt5aFVvVxbc5/Zone_Web?node-id=0-1&t=3W9cJKRH1i2hCAeL-0'
 };

@@ -37,7 +37,7 @@ export default function HomeAdvertisement() {
 
         <Typography variant="h1" component="h2" sx={{ mb: 8 }}>
           Create Your
-          <br /> Website Today
+          <br /> APP Today
         </Typography>
       </Stack>
     </Box>

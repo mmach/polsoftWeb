@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router';
+
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import { Button } from '@mui/material';
@@ -7,10 +9,9 @@ import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 import { useTheme } from '@mui/material/styles';
 
-import { paths } from 'src/routes/paths';
-
 import { useOffSetTop } from 'src/hooks/use-off-set-top';
 import { useResponsive } from 'src/hooks/use-responsive';
+import { useUserSession } from 'src/hooks/use-user-session';
 
 import { bgBlur } from 'src/theme/css';
 
@@ -30,6 +31,9 @@ type Props = {
 };
 
 export default function Header({ headerOnDark }: Props) {
+  const navigate = useNavigate();
+  const { isUserLogged } = useUserSession();
+
   const theme = useTheme();
 
   const offset = useOffSetTop();
@@ -75,18 +79,20 @@ export default function Header({ headerOnDark }: Props) {
         <Box sx={{ flexGrow: { xs: 1, md: 'unset' } }} />
       </>
 
-      <Button
+      {!isUserLogged && (<Button
         variant="contained"
         color="inherit"
-        href={paths.login}
-        target="_blank"
+        onClick={() => {
+          navigate('/auth/login');
+        }}
         rel="noopener"
         sx={{
           display: { xs: 'none', md: 'inline-flex' },
         }}
       >
         Login
-      </Button>
+      </Button>)}
+
 
       {!mdUp && <NavMobile data={navConfig} />}
     </>

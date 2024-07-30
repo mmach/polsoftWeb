@@ -1,5 +1,6 @@
-import { ProgramType } from "src/types/program/programType";
 import http from "src/utils/http";
+
+import { ProgramType } from "src/types/program/programType";
 
 
 export const ProgramAPI = {
