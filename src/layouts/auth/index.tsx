@@ -5,9 +5,8 @@ import Box, { BoxProps } from '@mui/material/Box';
 
 import { useUserSession } from 'src/hooks/use-user-session';
 
+import Header from '../main/header';
 import { HEADER } from '../config-layout';
-import Header from '../common/header-simple';
-
 // ----------------------------------------------------------------------
 
 type Props = BoxProps & {
@@ -43,7 +42,7 @@ export default function AuthLayout({
             }}
             {...other}
         >
-            <Header />
+            <Header headerOnDark={headerOnDark} />
 
             <Box component="main" sx={{ flexGrow: 1 }}>
                 {!(disabledSpacing || headerOnDark) && (

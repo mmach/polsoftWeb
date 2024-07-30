@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 
 export function useUserSession() {
-    const [isUserLogged, setIsUserLogged] = useState(localStorage.getItem('token') !== undefined);
+    const [isUserLogged, setIsUserLogged] = useState(!!localStorage.getItem('token'));
 
     const checkUserLogged = () => {
         const userToken = localStorage.getItem('token');
         
-        setIsUserLogged(userToken !== undefined);
+        setIsUserLogged(!!userToken);
     }
 
     useEffect(checkUserLogged, []);
