@@ -480,6 +480,8 @@ function ControlsPanel({ config, onChangeConfig, canReset, onReset }: ControlsPa
 
 const BASIC_NAV_ITEMS = [
   { title: 'Home', path: '#' },
+  { title: 'Programs', path: '/programs' },
+
   {
     title: 'Page',
     path: '#',

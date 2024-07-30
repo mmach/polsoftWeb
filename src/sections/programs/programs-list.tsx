@@ -1,7 +1,6 @@
-import { Box, Stack } from "@mui/system";
+import { Stack } from "@mui/system";
 import { Card, Typography } from "@mui/material";
 
-import { _mock } from "src/_mock";
 import { useProgramFacade } from "src/facade/program/useProgramFacade";
 
 import { MegaMenuDesktopVertical } from "src/components/mega-menu";
@@ -20,13 +19,8 @@ export default function ProgramsList() {
         <Typography variant="h6" sx={{ p: 2 }}>
           My Projects
         </Typography>
-
         <MegaMenuDesktopVertical data={NAV_ITEMS} />
       </Card>
-
-      <div>
-        <Box component="img" alt="any photo" src={_mock.image.cover(2)} sx={{ borderRadius: 1 }} />
-      </div>
     </Stack>
   )
 }

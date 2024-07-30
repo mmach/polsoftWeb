@@ -1,31 +1,37 @@
 import { lazy } from 'react';
-import { Outlet } from 'react-router-dom';
 
 import AuthLayout from 'src/layouts/auth';
+import EmptyProgramListScreen from 'src/pages/programs/empty';
 
 const ProgramsPage = lazy(() => import('src/pages/programs/index'));
 
 export const programRoutes = [
   {
     path: 'programs',
+
     element: (
       <AuthLayout>
-        <Outlet />
+        <ProgramsPage />
       </AuthLayout>
     ),
     children: [
       {
         element: (
-          <ProgramsPage />
+          <EmptyProgramListScreen />
         ),
         index: true,
       },
       {
+        path: 'create',
+        element: (
+          <>create</>
+        )
+      },
+      {
         path: ':id',
         element: (
-          <ProgramsPage />
-        ),
-        children: [],
+          <>selected</>
+        )
       },
     ],
   },
