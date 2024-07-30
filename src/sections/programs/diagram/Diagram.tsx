@@ -1,10 +1,14 @@
 import React from 'react';
-import { Node, Edge, ReactFlow, Controls } from '@xyflow/react';
+import { ReactFlow, Controls } from '@xyflow/react';
 import StepNode from './StepNode';
 import { useAtomValue } from 'jotai';
 import { edgesAtom, nodesAtom } from './store';
+import { useGetProgramStepsQuery } from 'src/features/programs/queries/useGetProgramStepsQuery';
+import { useParams } from 'react-router';
 
 const Diagram: React.FC = () => {
+  const {} = useGetProgramStepsQuery();
+
   const nodes = useAtomValue(nodesAtom);
   const edges = useAtomValue(edgesAtom);
 
