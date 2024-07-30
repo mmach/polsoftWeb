@@ -9,9 +9,6 @@ const initConfig = {
     },
     handleSuccess(succ: any) {
         return Promise.resolve(succ.data)
-    },
-    customHeaders: {
-        Authorization: `Basic ${localStorage.getItem('token')}`,
     }
 }
 
@@ -24,6 +21,10 @@ class Http {
             headers: init.customHeaders,
             baseURL: init.baseURL,
             withCredentials: init.withCredentials,
+        });
+        service.interceptors.request.use(config => {
+            config.headers.Authorization = `Basic ${localStorage.getItem('token')}`;
+            return config;
         });
         service.interceptors.response.use(init.handleSuccess, init.handleError);
         this.service = service;
