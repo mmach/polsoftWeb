@@ -11,6 +11,8 @@ import { WorkAPI } from 'src/facade';
 import { WebsocketContext } from 'src/facade/socket/webSocketContext';
 import { useProgramFacade } from 'src/facade/program/useProgramFacade';
 
+import Typewriter from 'src/components/typewriter';
+
 import ProgramView from 'src/sections/programs/program-view';
 
 import { WorkType, WebSocketMessageType } from 'src/types/program/programType';
@@ -46,8 +48,7 @@ export default function RunProgram() {
         <WebsocketContext workId={currentRun.id}>
           <ProgramView />
           <Terminal name='Program Output' colorMode={ColorMode.Dark} onInput={terminalInput => console.log(`New terminal input received: '${terminalInput}'`)}>
-            {/* {historyList.map(i => <Typewriter text={i.Output} delay={100} />)} */}
-            {historyList.map(i => <TerminalOutput>{i.Output}</TerminalOutput>)}
+            {historyList.map(i => <TerminalOutput><Typewriter text={i.Output} delay={1} /></TerminalOutput>)}
           </Terminal>
         </WebsocketContext>
       </Box>

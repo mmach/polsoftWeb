@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { TerminalOutput } from 'react-terminal-ui';
 
 type TypewriterConfiguration = {
     text: string;
@@ -11,10 +10,7 @@ const Typewriter = ({ text, delay, infinite = false }: TypewriterConfiguration) 
     const [currentText, setCurrentText] = useState('');
     const [currentIndex, setCurrentIndex] = useState(0);
 
-    console.log(`typewriter${  text}`)
-
     useEffect(() => {
-        console.log(text, delay);
         let timeout: NodeJS.Timeout;
 
         if (currentIndex <= text.length) {
@@ -31,7 +27,7 @@ const Typewriter = ({ text, delay, infinite = false }: TypewriterConfiguration) 
         return () => clearTimeout(timeout);
     }, [currentIndex, delay, infinite, text]);
 
-    return <TerminalOutput>{currentText}</TerminalOutput>;
+    return <span>{currentText}</span>;
 };
 
 export default Typewriter;
