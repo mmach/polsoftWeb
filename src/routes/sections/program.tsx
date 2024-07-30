@@ -1,3 +1,4 @@
+import { strict } from 'assert';
 import { lazy } from 'react';
 
 import AuthLayout from 'src/layouts/auth';
@@ -37,7 +38,21 @@ export const programRoutes = [
             index: true,
             element: (
               <ProgramView />
-            )
+            ),
+          },
+          {
+            path: 'run',
+            element: (
+              <ProgramView />
+            ),
+            children: [
+              {
+                index: true,
+                element: (
+                  <CreateOrUpdateProgramPage />
+                )
+              }
+            ]
           },
           {
             path: 'edit',
