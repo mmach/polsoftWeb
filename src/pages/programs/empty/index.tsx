@@ -1,7 +1,6 @@
 
 import { Box } from '@mui/system';
 
-
 import { _mock } from 'src/_mock';
 
 

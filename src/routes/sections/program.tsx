@@ -2,6 +2,7 @@ import { lazy } from 'react';
 
 import AuthLayout from 'src/layouts/auth';
 import EmptyProgramListScreen from 'src/pages/programs/empty';
+import CreateOrUpdateProgramPage from 'src/pages/programs/creatProgram';
 
 const ProgramsPage = lazy(() => import('src/pages/programs/index'));
 
@@ -24,13 +25,13 @@ export const programRoutes = [
       {
         path: 'create',
         element: (
-          <>create</>
+          <CreateOrUpdateProgramPage />
         )
       },
       {
         path: ':id',
         element: (
-          <>selected</>
+          <CreateOrUpdateProgramPage />
         )
       },
     ],
