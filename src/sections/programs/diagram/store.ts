@@ -1,6 +1,8 @@
 import { atom } from 'jotai';
 import { Node, Edge } from '@xyflow/react';
 
+import { APIProgramStep } from 'src/features/programs/queries/useGetProgramStepsQuery';
+
 export const nodesAtom = atom<Node[]>([
   {
     id: '1',
@@ -15,9 +17,6 @@ export const nodesAtom = atom<Node[]>([
 
 export const edgesAtom = atom<Edge[]>([]);
 
-type PreviewCodeProps = {
-  ID: string;
-  code: string;
-};
+export const previewCodeAtom = atom<APIProgramStep | null>(null);
 
-export const previewCode = atom<PreviewCodeProps | null>(null);
+export const currentStepAtom = atom<string | null>(null);

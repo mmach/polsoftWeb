@@ -1,8 +1,8 @@
 import * as Yup from 'yup';
-import { useAtom } from 'jotai';
 import React, { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
+import { useAtom, useAtomValue } from 'jotai';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Node, Handle, Position, NodeProps } from '@xyflow/react';
 
@@ -10,27 +10,20 @@ import { LoadingButton } from '@mui/lab';
 import { Box, Stack, Button, ButtonBase } from '@mui/material';
 
 import { useProgramFacade } from 'src/facade/program/useProgramFacade';
+import { APIProgramStep } from 'src/features/programs/queries/useGetProgramStepsQuery';
 import { useCreateProgramStepMutation } from 'src/features/programs/mutations/useCreateProgramStepMutation';
 import { useUpdateProgramStepMutation } from 'src/features/programs/mutations/useUpdateProgramStepMutation';
 
 import FormProvider, { RHFTextField } from 'src/components/hook-form';
 
-import { edgesAtom, nodesAtom } from './store';
+import { edgesAtom, nodesAtom, currentStepAtom, previewCodeAtom } from './store';
 
 const schema = Yup.object().shape({
   name: Yup.string().required(),
   instructions: Yup.string().required(),
 });
 
-type StepNode = Node<
-  {
-    code?: string;
-    name: string;
-    description: string;
-    parentStepID?: number;
-  },
-  'step'
->;
+type StepNode = Node<APIProgramStep, 'step'>;
 
 export default React.memo(({ data, id }: NodeProps<StepNode>) => {
   const { id: programGUID } = useParams();
@@ -42,7 +35,10 @@ export default React.memo(({ data, id }: NodeProps<StepNode>) => {
   };
 
   // Note: This will be always defined (parent guards value)
-  const programID = useMemo<number>(() => programs?.find((program) => program.guid === programGUID)!.id, [programs, programGUID]);
+  const programID = useMemo<number>(
+    () => programs?.find((program) => program.guid === programGUID)!.id,
+    [programs, programGUID]
+  );
 
   const [nodes, setNodes] = useAtom(nodesAtom);
   const [edges, setEdges] = useAtom(edgesAtom);
@@ -64,7 +60,7 @@ export default React.memo(({ data, id }: NodeProps<StepNode>) => {
       ? await update({
           name: values.name,
           description: values.instructions,
-          parentStepID: data.parentStepID,
+          parentStepID: data.parentStepId,
           stepID: +id,
         })
       : await create({
@@ -122,6 +118,16 @@ export default React.memo(({ data, id }: NodeProps<StepNode>) => {
     ]);
   };
 
+  // Code Preview
+  const [, setPreviewCode] = useAtom(previewCodeAtom);
+
+  const onCodePreview = () => {
+    setPreviewCode(data);
+  };
+
+  // Current Step Highlight
+  const currentStepID = useAtomValue(currentStepAtom);
+
   const lastNode = id === nodes[nodes.length - 1].id && !!nodes[nodes.length - 1].data.code;
 
   return (
@@ -139,6 +145,8 @@ export default React.memo(({ data, id }: NodeProps<StepNode>) => {
           borderRadius: '4px',
           padding: (theme) => theme.spacing(2),
           width: '320px',
+          border: (theme) =>
+            currentStepID === id ? `4px solid ${theme.palette.success.main}` : undefined,
         }}
       >
         <Stack direction="column" gap={1} sx={{ position: 'relative' }}>
@@ -147,7 +155,15 @@ export default React.memo(({ data, id }: NodeProps<StepNode>) => {
               <RHFTextField name="name" label="Name" />
               <RHFTextField multiline rows={3} name="instructions" label="Instructions" />
               {data.code?.length ? (
-                <Button fullWidth color="inherit" size="large" type="submit" variant="contained">
+                <Button
+                  fullWidth
+                  color="inherit"
+                  size="large"
+                  type="button"
+                  variant="contained"
+                  onClick={onCodePreview}
+                  disabled={formState.isSubmitting}
+                >
                   Preview Code
                 </Button>
               ) : null}
