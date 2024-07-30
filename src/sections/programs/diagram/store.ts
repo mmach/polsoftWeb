@@ -14,3 +14,10 @@ export const nodesAtom = atom<Node[]>([
 ]);
 
 export const edgesAtom = atom<Edge[]>([]);
+
+type PreviewCodeProps = {
+  ID: string;
+  code: string;
+};
+
+export const previewCode = atom<PreviewCodeProps | null>(null);
