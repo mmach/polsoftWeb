@@ -17,7 +17,6 @@ import { bgBlur } from 'src/theme/css';
 import Logo from 'src/components/logo';
 import Label from 'src/components/label';
 
-import NavMobile from './nav/mobile';
 import NavDesktop from './nav/desktop';
 import { HEADER } from '../config-layout';
 import Searchbar from '../common/searchbar';
@@ -44,7 +43,7 @@ export default function Header({ headerOnDark }: Props) {
         <Logo />
 
         <Link href="https://zone-docs.vercel.app/changelog" target="_blank" rel="noopener">
-          
+          {/* Link content if any */}
         </Link>
       </Box>
 
@@ -57,7 +56,7 @@ export default function Header({ headerOnDark }: Props) {
             display: { xs: 'none', md: 'flex' },
           }}
         >
-         
+          {/* Additional content if any */}
         </Stack>
 
         <Box sx={{ flexGrow: { xs: 1, md: 'unset' } }} />
@@ -65,9 +64,7 @@ export default function Header({ headerOnDark }: Props) {
 
       <Stack spacing={2} direction="row" alignItems="center" justifyContent="flex-end">
         <Stack spacing={1} direction="row" alignItems="center">
-          
-
-          
+          {/* Additional content if any */}
         </Stack>
 
         <Button
@@ -77,14 +74,12 @@ export default function Header({ headerOnDark }: Props) {
           target="_blank"
           rel="noopener"
           sx={{
-            display: { xs: 'none', md: 'inline-flex' },
+            display: { xs: 'inline-flex', md: 'inline-flex' },
           }}
         >
           Enter App
         </Button>
       </Stack>
-
-      {!mdUp && <NavMobile data={navConfig} />}
     </>
   );
 
@@ -118,7 +113,7 @@ export default function Header({ headerOnDark }: Props) {
             height: 1,
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center',
+            justifyContent: 'space-between',
           }}
         >
           {renderContent}
