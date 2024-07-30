@@ -11,7 +11,7 @@ import { ProgramType } from 'src/types/program/programType';
 
 export default function DashboardProgramPage() {
   const { id } = useParams();
-  const { refetchList, programs, isListFatched } = useProgramFacade()
+  const { programs, isListFatched } = useProgramFacade()
   const [values, setValues] = useState<ProgramType>()
   const navigate = useNavigate()
   useEffect(() => {

@@ -20,6 +20,7 @@ import Logo from 'src/components/logo';
 import Iconify from 'src/components/iconify';
 
 import NavMobile from './nav/mobile';
+import NavDesktop from './nav/desktop';
 import { HEADER } from '../config-layout';
 import HeaderShadow from '../common/header-shadow';
 
@@ -56,7 +57,8 @@ export default function Header({ headerOnDark }: Props) {
             height: 1,
             display: { xs: 'none', md: 'flex' },
           }}
-         />
+        >
+          {mdUp && <NavDesktop data={navConfig} />}</Stack>
 
         <Box sx={{ flexGrow: { xs: 1, md: 'unset' } }} />
       </>
@@ -72,7 +74,7 @@ export default function Header({ headerOnDark }: Props) {
           display: { xs: 'none', md: 'inline-flex' },
         }}
       >
-          Enter App
+        Enter App
       </Button>)}
 
       {isUserLogged && (<Button
@@ -90,7 +92,6 @@ export default function Header({ headerOnDark }: Props) {
         <Iconify icon="carbon:logout" />
         Logout
       </Button>)}
-
 
       {!mdUp && <NavMobile data={navConfig} />}
     </>

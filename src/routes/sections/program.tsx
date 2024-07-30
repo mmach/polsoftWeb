@@ -1,10 +1,10 @@
 import { lazy } from 'react';
 
 import AuthLayout from 'src/layouts/auth';
+import RunProgram from 'src/pages/programs/runProgram';
 import EmptyProgramListScreen from 'src/pages/programs/empty';
 import DashboardProgramPage from 'src/pages/programs/dashboard';
 import CreateOrUpdateProgramPage from 'src/pages/programs/creatProgram';
-import RunProgram from 'src/pages/programs/runProgram';
 
 import ProgramView from 'src/sections/programs/program-view';
 

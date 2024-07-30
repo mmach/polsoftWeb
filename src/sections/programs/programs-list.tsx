@@ -11,7 +11,7 @@ export default function ProgramsList() {
   const { programs, isListFatched } = useProgramFacade();
   const navigate = useNavigate()
 
-  if (!isListFatched) return <></>
+  if (!isListFatched) return null;
 
   const NAV_ITEMS = programs?.map(p => ({
     title: p.name,
