@@ -1,6 +1,8 @@
 import { atom } from 'jotai';
-import { ProgramType } from 'src/types/program/programType';
+
 import Http from 'src/utils/http';
+
+import { ProgramType } from 'src/types/program/programType';
 
 // ----------------------------------------------------------------------
 
