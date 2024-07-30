@@ -18,6 +18,7 @@ import { bgBlur } from 'src/theme/css';
 
 import Logo from 'src/components/logo';
 import Label from 'src/components/label';
+import Iconify from 'src/components/iconify';
 
 import NavMobile from './nav/mobile';
 import NavDesktop from './nav/desktop';
@@ -106,6 +107,7 @@ export default function Header({ headerOnDark }: Props) {
           display: { xs: 'none', md: 'inline-flex' },
         }}
       >
+        <Iconify icon="carbon:logout" />
         Logout
       </Button>)}
 

@@ -4,6 +4,7 @@ import AuthLayout from 'src/layouts/auth';
 import EmptyProgramListScreen from 'src/pages/programs/empty';
 import DashboardProgramPage from 'src/pages/programs/dashboard';
 import CreateOrUpdateProgramPage from 'src/pages/programs/creatProgram';
+import RunProgram from 'src/pages/programs/runProgram';
 
 import ProgramView from 'src/sections/programs/program-view';
 
@@ -29,39 +30,28 @@ export const programRoutes = [
       },
       {
         path: ':id',
-        element: (
-          <DashboardProgramPage />
-        ),
+        element: <DashboardProgramPage />,
         children: [
           {
             index: true,
-            element: (
-              <ProgramView />
-            ),
+            element: <ProgramView />,
           },
           {
             path: 'run',
-            element: (
-              <ProgramView />
-            ),
+            element: <RunProgram />,
             children: [
               {
                 index: true,
-                element: (
-                  <CreateOrUpdateProgramPage />
-                )
-              }
-            ]
+                element: <CreateOrUpdateProgramPage />,
+              },
+            ],
           },
           {
             path: 'edit',
-            element: (
-              <CreateOrUpdateProgramPage />
-            )
-          }
-        ]
+            element: <CreateOrUpdateProgramPage />,
+          },
+        ],
       },
-
     ],
   },
 ];

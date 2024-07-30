@@ -4,18 +4,18 @@ import useWebSocket from "react-use-websocket";
 
 type Prop = {
     children: React.ReactNode
+    workId: number
 }
 
-const WebsocketContext = ({ children }: Prop) => {
+export const WebsocketContext = ({ children, workId }: Prop) => {
 
-    const params = useParams();
-    const { sendMessage, lastMessage, readyState } = useWebSocket(`wss://polsoft2000api.azurewebsites.net/ws?workId=${params.workId}`);
+    const { sendMessage, lastMessage, readyState } = useWebSocket(`wss://polsoft2000api.azurewebsites.net/ws?workId=${workId}`);
 
     useEffect(() => {
         if (lastMessage !== null) {
             console.log(lastMessage)
         }
-    }, [lastMessage, params.workId]);
+    }, [lastMessage, workId]);
 
     return children
 
