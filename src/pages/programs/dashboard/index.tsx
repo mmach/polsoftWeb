@@ -27,7 +27,7 @@ export default function DashboardProgramPage() {
       <Helmet>
         <title>Manage Programs</title>
       </Helmet>
-      <Box width={1000} gap={1} padding={2} justifyContent='center' display='flex' height={700} flexDirection='column'>
+      <Box width={1000} gap={1} padding={2} justifyContent='center' display='flex' minHeight={700} flexDirection='column'>
         <Box display='flex' flexDirection='row' alignItems='center' justifyContent='space-between'>
           <Typography>{values?.name}</Typography>
           <Box>
