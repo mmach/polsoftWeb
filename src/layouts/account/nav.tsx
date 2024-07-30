@@ -23,30 +23,10 @@ import TextMaxLine from 'src/components/text-max-line';
 
 const navigations = [
   {
-    title: 'Personal Info',
-    path: paths.eCommerce.account.personal,
+    title: 'Main',
+    path: paths.main,
     icon: <Iconify icon="carbon:user" />,
-  },
-  {
-    title: 'Wishlist',
-    path: paths.eCommerce.account.wishlist,
-    icon: <Iconify icon="carbon:favorite" />,
-  },
-  {
-    title: 'Vouchers',
-    path: paths.eCommerce.account.vouchers,
-    icon: <Iconify icon="carbon:cut-out" />,
-  },
-  {
-    title: 'Orders',
-    path: paths.eCommerce.account.orders,
-    icon: <Iconify icon="carbon:document" />,
-  },
-  {
-    title: 'Payment',
-    path: paths.eCommerce.account.payment,
-    icon: <Iconify icon="carbon:purchase" />,
-  },
+  }
 ];
 
 // ----------------------------------------------------------------------

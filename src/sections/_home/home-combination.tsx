@@ -1,41 +1,15 @@
 import { m } from 'framer-motion';
 
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
-import { paths } from 'src/routes/paths';
-
-import { useResponsive } from 'src/hooks/use-responsive';
-
 import Image from 'src/components/image';
-import Iconify from 'src/components/iconify';
 import { varFade, MotionViewport } from 'src/components/animate';
 
 // ----------------------------------------------------------------------
 
-export default function HomeCombination() {
-  const mdUp = useResponsive('up', 'md');
-
-  const visitBtn = (
-    <m.div variants={varFade().inLeft}>
-      <Button
-        size="large"
-        color="inherit"
-        variant="outlined"
-        target="_blank"
-        rel="noopener"
-        href={paths.minimalStore}
-        endIcon={<Iconify icon="carbon:chevron-right" width={16} />}
-        sx={{ ...(mdUp && { mt: 5 }) }}
-      >
-        Visit Minimal Dashboard
-      </Button>
-    </m.div>
-  );
-
-  return (
+export default function HomeCombination() {  return (
     <Container
       component={MotionViewport}
       sx={{
@@ -80,7 +54,6 @@ export default function HomeCombination() {
           </Typography>
         </m.div>
 
-        {mdUp && visitBtn}
       </Box>
 
       <Box
@@ -102,7 +75,6 @@ export default function HomeCombination() {
         </m.div>
       </Box>
 
-      {!mdUp && visitBtn}
     </Container>
   );
 }

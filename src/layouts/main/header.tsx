@@ -1,13 +1,10 @@
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 import { useTheme } from '@mui/material/styles';
-
-import { paths } from 'src/routes/paths';
 
 import { useOffSetTop } from 'src/hooks/use-off-set-top';
 import { useResponsive } from 'src/hooks/use-responsive';
@@ -84,18 +81,7 @@ export default function Header({ headerOnDark }: Props) {
           <SettingsButton />
         </Stack>
 
-        <Button
-          variant="contained"
-          color="inherit"
-          href={paths.zoneStore}
-          target="_blank"
-          rel="noopener"
-          sx={{
-            display: { xs: 'none', md: 'inline-flex' },
-          }}
-        >
-          Buy Now
-        </Button>
+      
       </Stack>
 
       {!mdUp && <NavMobile data={navConfig} />}
