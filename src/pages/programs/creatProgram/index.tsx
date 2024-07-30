@@ -43,7 +43,7 @@ export default function CreateOrUpdateProgramPage() {
     if (result) {
       setValues(result as ProgramType);
     }
-  }, [id]);
+  }, [id, programs])
 
   const onSubmit = handleSubmit(async (data) => {
     const result = await ProgramAPI.CreateNew(data as ProgramType);
