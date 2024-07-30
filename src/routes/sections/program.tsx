@@ -1,7 +1,7 @@
 import { lazy } from 'react';
 import { Outlet } from 'react-router-dom';
 
-import MainLayout from 'src/layouts/main';
+import AuthLayout from 'src/layouts/auth';
 
 const ProgramsPage = lazy(() => import('src/pages/programs/index'));
 
@@ -9,9 +9,9 @@ export const programRoutes = [
   {
     path: 'programs',
     element: (
-      <MainLayout>
+      <AuthLayout>
         <Outlet />
-      </MainLayout>
+      </AuthLayout>
     ),
     children: [
       {
