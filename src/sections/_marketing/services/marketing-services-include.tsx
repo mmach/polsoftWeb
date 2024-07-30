@@ -9,41 +9,37 @@ import { paths } from 'src/routes/paths';
 
 const SERVICES = [
   {
-    title: 'AI Code Generator',
-    description: 'Automatically generate code snippets using advanced AI technology.',
+    title: 'Architecture Design',
+    description: 'Streamline and optimize your software architecture with advanced design tools.',
     icon: '/assets/icons/ic_web_programming.svg'
   },
   {
-    title: 'Host Your App',
-    description: 'Secure and scalable hosting solutions for your applications.',
+    title: 'AI Code Generator',
+    description: 'Leverage artificial intelligence to automatically generate efficient and reliable code.',
     icon: '/assets/icons/ic_optimization.svg',
   },
   {
-    title: 'Deployment',
-    description: 'Streamline the process of deploying your software with easy-to-use tools.',
+    title: 'Create App in 5 Minutes',
+    description: 'Quickly design and launch applications with our intuitive, time-saving platform.',
     icon: '/assets/icons/ic_sketch_design.svg',
   },
   {
-    title: 'Automated Deployment, CI/CD',
-    description: 'Integrate continuous integration and continuous deployment for seamless software updates.',
+    title: 'Build and Run Your Code',
+    description: 'Compile and execute your code seamlessly in our integrated development environment.',
     icon: '/assets/icons/ic_real_time.svg',
   },
   {
-    title: 'Build and Run Your Code',
-    description: 'Compile and execute your code directly from the platform.',
+    title: 'Instant Feedback',
+    description: 'Receive real-time responses and debugging support to enhance your development process.',
     icon: '/assets/icons/ic_statistics.svg',
   },
   {
-    title: 'Create App in 5 Minutes',
-    description: 'Quickly craft applications with our streamlined setup process.',
-    icon: '/assets/icons/ic_social_media.svg',
-  },
-  {
-    title: 'Instant Resolution',
-    description: 'Resolve issues instantly with our advanced troubleshooting and support tools, providing real-time diagnostics and automated fixes.',
+    title: 'Automated Deployment, CI/CD',
+    description: 'Simplify your deployment workflow with continuous integration and continuous deployment solutions.',
     icon: '/assets/icons/ic_social_media.svg',
   },
 ];
+
 
 
 // ----------------------------------------------------------------------
