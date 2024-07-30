@@ -3,16 +3,15 @@ import { Helmet } from 'react-helmet-async';
 
 import { ProgramType } from 'src/types/program/programType';
 
-import { IconButton, Typography } from '@mui/material';
+import { CircularProgress, IconButton, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import { useEffect, useState } from 'react';
 import { Outlet, useNavigate, useParams } from 'react-router';
 import { useProgramFacade } from 'src/facade/program/useProgramFacade';
-import { Link } from 'react-router-dom';
 
 export default function DashboardProgramPage() {
   const { id } = useParams();
-  const { refetchList, programs } = useProgramFacade()
+  const { refetchList, programs, isListFatched } = useProgramFacade()
   const [values, setValues] = useState<ProgramType>()
   const navigate = useNavigate()
   useEffect(() => {
@@ -22,6 +21,7 @@ export default function DashboardProgramPage() {
     }
   }, [id, programs])
 
+  if (!isListFatched) return <CircularProgress />
   return (
     <>
       <Helmet>

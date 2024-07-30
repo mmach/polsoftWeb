@@ -16,7 +16,7 @@ export default function MegaMenuDesktopVertical({ data, sx, slotProps, ...other 
       }}
       {...other}
     >
-      {data.map((list) => (
+      {data?.map((list) => (
         <NavList key={list.title} data={list} slotProps={slotProps} />
       ))}
     </Stack>
