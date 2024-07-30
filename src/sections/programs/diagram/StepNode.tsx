@@ -17,9 +17,9 @@ import { useUpdateProgramStepMutation } from 'src/features/programs/mutations/us
 import FormProvider, { RHFTextField } from 'src/components/hook-form';
 import Iconify from 'src/components/iconify';
 
+import { APIProgramStep } from 'src/features/programs/queries/useGetProgramStepsQuery';
 import { InstructionsDialog } from './InstructionsDialog';
 import { currentStepAtom, edgesAtom, nodesAtom, previewCodeAtom } from './store';
-import { APIProgramStep } from 'src/features/programs/queries/useGetProgramStepsQuery';
 
 const schema = Yup.object().shape({
   name: Yup.string().required(),
