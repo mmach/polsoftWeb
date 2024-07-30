@@ -15,7 +15,7 @@ interface ReturnType {
 }
 
 export function useProgramFacade(): ReturnType {
-    const { isLoading, isFetched, data: result, refetch } = useQuery({
+    const { isFetched, data: result, refetch } = useQuery({
         queryKey: ['GET_PROGRAM'],
         queryFn: ProgramAPI.GetAll,
     })
