@@ -1,4 +1,3 @@
-import Stack from '@mui/material/Stack';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import { useTheme } from '@mui/material/styles';
@@ -11,7 +10,6 @@ import Logo from 'src/components/logo';
 
 import { HEADER } from '../config-layout';
 import HeaderShadow from './header-shadow';
-import SettingsButton from './settings-button';
 
 // ----------------------------------------------------------------------
 
@@ -43,18 +41,6 @@ export default function HeaderSimple() {
         }}
       >
         <Logo />
-
-        <Stack
-          spacing={1}
-          flexGrow={1}
-          direction="row"
-          alignItems="center"
-          justifyContent="flex-end"
-        >
-          <SettingsButton />
-
-         
-        </Stack>
       </Toolbar>
 
       {offset && <HeaderShadow />}

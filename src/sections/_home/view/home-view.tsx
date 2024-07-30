@@ -30,7 +30,6 @@ export default function HomeView() {
 
       <HomeForDesigner />
 
-
       <HomeFAQs />
 
       <HomeCombination />

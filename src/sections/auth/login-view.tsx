@@ -1,13 +1,12 @@
 import * as Yup from 'yup';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
 import LoadingButton from '@mui/lab/LoadingButton';
 import InputAdornment from '@mui/material/InputAdornment';
 
@@ -21,18 +20,19 @@ import FormProvider, { RHFTextField } from 'src/components/hook-form';
 
 // ----------------------------------------------------------------------
 
-export default function LoginIllustrationView() {
+export default function LoginView() {
+  const navigate = useNavigate();
   const passwordShow = useBoolean();
 
   const LoginSchema = Yup.object().shape({
-    email: Yup.string().required('Email is required').email('That is not an email'),
+    username: Yup.string().required('Username is required'),
     password: Yup.string()
       .required('Password is required')
       .min(6, 'Password should be of minimum 6 characters length'),
   });
 
   const defaultValues = {
-    email: '',
+    username: '',
     password: '',
   };
 
@@ -51,7 +51,13 @@ export default function LoginIllustrationView() {
     try {
       await new Promise((resolve) => setTimeout(resolve, 500));
       reset();
-      console.log('DATA', data);
+
+      // Generate & Save User Token
+      const token = btoa(data.username);
+      localStorage.setItem('token', token);
+
+      // Redirect
+      navigate('/programs');
     } catch (error) {
       console.error(error);
     }
@@ -65,38 +71,17 @@ export default function LoginIllustrationView() {
 
       <Typography variant="body2" sx={{ color: 'text.secondary' }}>
         {`Don’t have an account? `}
-        <Link
-          component={RouterLink}
-          href={paths.registerIllustration}
-          variant="subtitle2"
-          color="primary"
-        >
+        <Link component={RouterLink} href={paths.register} variant="subtitle2" color="primary">
           Get started
         </Link>
       </Typography>
     </div>
   );
 
-  const renderSocials = (
-    <Stack direction="row" spacing={2}>
-      <Button fullWidth size="large" color="inherit" variant="outlined">
-        <Iconify icon="logos:google-icon" width={24} />
-      </Button>
-
-      <Button fullWidth size="large" color="inherit" variant="outlined">
-        <Iconify icon="carbon:logo-facebook" width={24} sx={{ color: '#1877F2' }} />
-      </Button>
-
-      <Button color="inherit" fullWidth variant="outlined" size="large">
-        <Iconify icon="carbon:logo-github" width={24} sx={{ color: 'text.primary' }} />
-      </Button>
-    </Stack>
-  );
-
   const renderForm = (
     <FormProvider methods={methods} onSubmit={onSubmit}>
       <Stack spacing={2.5} alignItems="flex-end">
-        <RHFTextField name="email" label="Email address" />
+        <RHFTextField name="username" label="Username" />
 
         <RHFTextField
           name="password"
@@ -112,16 +97,6 @@ export default function LoginIllustrationView() {
             ),
           }}
         />
-
-        <Link
-          component={RouterLink}
-          href={paths.forgotPassword}
-          variant="body2"
-          underline="always"
-          color="text.secondary"
-        >
-          Forgot password?
-        </Link>
 
         <LoadingButton
           fullWidth
@@ -142,14 +117,6 @@ export default function LoginIllustrationView() {
       {renderHead}
 
       {renderForm}
-
-      <Divider>
-        <Typography variant="body2" sx={{ color: 'text.disabled' }}>
-          or continue with
-        </Typography>
-      </Divider>
-
-      {renderSocials}
     </>
   );
 }

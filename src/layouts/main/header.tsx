@@ -1,10 +1,13 @@
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
+import { Button } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 import { useTheme } from '@mui/material/styles';
+
+import { paths } from 'src/routes/paths';
 
 import { useOffSetTop } from 'src/hooks/use-off-set-top';
 import { useResponsive } from 'src/hooks/use-responsive';
@@ -17,10 +20,8 @@ import Label from 'src/components/label';
 import NavMobile from './nav/mobile';
 import NavDesktop from './nav/desktop';
 import { HEADER } from '../config-layout';
-import Searchbar from '../common/searchbar';
 import { navConfig } from './config-navigation';
 import HeaderShadow from '../common/header-shadow';
-import SettingsButton from '../common/settings-button';
 
 // ----------------------------------------------------------------------
 
@@ -74,15 +75,18 @@ export default function Header({ headerOnDark }: Props) {
         <Box sx={{ flexGrow: { xs: 1, md: 'unset' } }} />
       </>
 
-      <Stack spacing={2} direction="row" alignItems="center" justifyContent="flex-end">
-        <Stack spacing={1} direction="row" alignItems="center">
-          <Searchbar />
-
-          <SettingsButton />
-        </Stack>
-
-      
-      </Stack>
+      <Button
+        variant="contained"
+        color="inherit"
+        href={paths.login}
+        target="_blank"
+        rel="noopener"
+        sx={{
+          display: { xs: 'none', md: 'inline-flex' },
+        }}
+      >
+        Login
+      </Button>
 
       {!mdUp && <NavMobile data={navConfig} />}
     </>
