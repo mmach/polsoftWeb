@@ -8,20 +8,23 @@ const ProgramsPage = lazy(() => import('src/pages/programs/index'));
 export const programRoutes = [
   {
     path: 'programs',
+    
+    element: (
+      <MainLayout>
+        <Outlet />
+      </MainLayout>
+    ),
     children: [
       {
         element: (
-          <MainLayout disabledSpacing>
-            <ProgramsPage />
-          </MainLayout>
+          <ProgramsPage />
         ),
         index: true,
       },
       {
+        path: ':id',
         element: (
-          <MainLayout>
-            <Outlet />
-          </MainLayout>
+          <ProgramsPage />
         ),
         children: [],
       },

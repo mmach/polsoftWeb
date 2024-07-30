@@ -11,7 +11,7 @@ interface ReturnType {
 }
 
 export function useProgramFacade(): ReturnType {
-    const [programs ] = useAtom(fetchProgramAtom)
+    const [programs] = useAtom(fetchProgramAtom)
 
     return {
         programs
