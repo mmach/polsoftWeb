@@ -3,13 +3,11 @@ import { useScroll } from 'framer-motion';
 import ScrollProgress from 'src/components/scroll-progress';
 
 import MarketingTeamAbout from 'src/sections/_marketing/team/marketing-team-about';
+import MarketingLandingAbout from 'src/sections/_marketing/landing/marketing-landing-about';
 import MarketingServicesInclude from 'src/sections/_marketing/services/marketing-services-include';
 
-import HomeFAQs from '../home-faqs';
 import HomeHero from '../home-hero';
-import HomeCombination from '../home-combination';
-import HomeForDesigner from '../home-for-designer';
-import HomeAdvertisement from '../home-advertisement';
+import HomeFAQs from '../home-faqs';
 
 
 // ----------------------------------------------------------------------
@@ -79,14 +77,9 @@ export default function HomeView() {
 ]} />
 
 
-
-      <HomeForDesigner />
+      <MarketingLandingAbout />
 
       <HomeFAQs />
-
-      <HomeCombination />
-
-      <HomeAdvertisement />
     </>
   );
 }
