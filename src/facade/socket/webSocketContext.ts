@@ -36,7 +36,8 @@ export const WebsocketContext = ({ children, workId }: Prop) => {
             setCurrentStep(null)
             setHistoryAtom([])
         }
-    }, [lastMessage, workId, setCurrentStep, setHistoryAtom, history]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [lastMessage, workId]);
 
     return children
 
