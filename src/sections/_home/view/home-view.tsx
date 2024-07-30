@@ -9,6 +9,8 @@ import HomeForDesigner from '../home-for-designer';
 import HomeAdvertisement from '../home-advertisement';
 import MarketingTeamAbout from 'src/sections/_marketing/team/marketing-team-about';
 import MarketingServicesInclude from 'src/sections/_marketing/services/marketing-services-include';
+import MarketingAbout from 'src/sections/_marketing/about/marketing-about';
+import MarketingLandingAbout from 'src/sections/_marketing/landing/marketing-landing-about';
 
 
 // ----------------------------------------------------------------------
@@ -78,14 +80,9 @@ export default function HomeView() {
 ]} />
 
 
-
-      <HomeForDesigner />
+      <MarketingLandingAbout />
 
       <HomeFAQs />
-
-      <HomeCombination />
-
-      <HomeAdvertisement />
     </>
   );
 }
