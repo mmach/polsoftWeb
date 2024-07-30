@@ -9,29 +9,34 @@ import { paths } from 'src/routes/paths';
 
 const SERVICES = [
   {
-    title: 'Host Your App',
-    description: 'Secure and scalable hosting solutions to ensure your applications are always available and performing at their best.',
+    title: 'AI Code Generator',
+    description: 'Automatically generate code snippets using advanced AI technology.',
     icon: '/assets/icons/ic_web_programming.svg'
   },
   {
-    title: 'Automated Deployment, CI/CD',
-    description: 'Streamline your deployment process with automated CI/CD tools, reducing downtime and accelerating your release cycle.',
+    title: 'Host Your App',
+    description: 'Secure and scalable hosting solutions for your applications.',
     icon: '/assets/icons/ic_optimization.svg',
   },
   {
-    title: 'Automatic Build',
-    description: 'Efficient and reliable build automation to compile and test your code, catching errors early in the development process.',
+    title: 'Deployment',
+    description: 'Streamline the process of deploying your software with easy-to-use tools.',
     icon: '/assets/icons/ic_sketch_design.svg',
   },
   {
-    title: 'Automatic Run Your Code',
-    description: 'Execute your code with precision and speed in our optimized execution environment, ensuring smooth performance and instant feedback.',
+    title: 'Automated Deployment, CI/CD',
+    description: 'Integrate continuous integration and continuous deployment for seamless software updates.',
     icon: '/assets/icons/ic_real_time.svg',
   },
   {
-    title: 'Create App in 5 Minutes',
-    description: 'Accelerate your development process and create fully functional applications in just five minutes with our intuitive tools and pre-built templates.',
+    title: 'Build and Run Your Code',
+    description: 'Compile and execute your code directly from the platform.',
     icon: '/assets/icons/ic_statistics.svg',
+  },
+  {
+    title: 'Create App in 5 Minutes',
+    description: 'Quickly craft applications with our streamlined setup process.',
+    icon: '/assets/icons/ic_social_media.svg',
   },
   {
     title: 'Instant Resolution',
