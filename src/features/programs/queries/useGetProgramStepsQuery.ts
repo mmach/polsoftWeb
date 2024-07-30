@@ -9,9 +9,12 @@ export type APIProgramStep = {
   programId: number;
   parentStepId?: number;
   name: string;
+  cleanCode: string;
+  cleanPrerequisites: string;
 };
 
-export const useGetProgramStepsQuery = (programID: number) => useQuery<APIProgramStep[]>({
+export const useGetProgramStepsQuery = (programID: number) =>
+  useQuery<APIProgramStep[]>({
     queryKey: ['program:steps', programID],
     queryFn: () => getProgramSteps(programID),
   });

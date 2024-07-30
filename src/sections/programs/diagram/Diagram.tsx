@@ -6,6 +6,7 @@ import { useGetProgramStepsQuery } from 'src/features/programs/queries/useGetPro
 
 import StepNode from './StepNode';
 import { edgesAtom, nodesAtom } from './store';
+import { PreviewCodeDialog } from './PreviewCodeDialog';
 
 type DiagramProps = {
   programID: number;
@@ -36,12 +37,7 @@ const Diagram: React.FC<DiagramProps> = ({ programID }) => {
           x: n.length === 0 ? 0 : n[n.length - 1].position.x + 420,
           y: 0,
         },
-        data: {
-          code: item.code,
-          name: item.name,
-          description: item.description,
-          parentStepID: item.parentStepId,
-        },
+        data: item,
       });
     }
 
@@ -74,17 +70,21 @@ const Diagram: React.FC<DiagramProps> = ({ programID }) => {
   }
 
   return (
-    <ReactFlow
-      nodes={nodes}
-      edges={edges}
-      colorMode="dark"
-      fitView
-      nodeTypes={{
-        step: StepNode,
-      }}
-    >
-      <Controls showInteractive={false} />
-    </ReactFlow>
+    <>
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        colorMode="dark"
+        fitView
+        nodeTypes={{
+          step: StepNode,
+        }}
+      >
+        <Controls showInteractive={false} />
+      </ReactFlow>
+
+      <PreviewCodeDialog />
+    </>
   );
 };
 
