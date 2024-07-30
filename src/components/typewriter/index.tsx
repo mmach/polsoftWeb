@@ -15,7 +15,7 @@ const Typewriter = ({ text, delay, infinite = false }: TypewriterConfiguration) 
 
         if (currentIndex <= text.length) {
             timeout = setTimeout(() => {
-                setCurrentText(prevText => prevText + text[currentIndex]);
+                if(text[currentIndex] !== undefined && text[currentIndex] !== null) setCurrentText(prevText => prevText + text[currentIndex]);
                 setCurrentIndex(prevIndex => prevIndex + 1);
             }, delay);
 
