@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router';
+
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import { Button } from '@mui/material';
@@ -6,8 +8,6 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 import { useTheme } from '@mui/material/styles';
-
-import { paths } from 'src/routes/paths';
 
 import { useOffSetTop } from 'src/hooks/use-off-set-top';
 import { useResponsive } from 'src/hooks/use-responsive';
@@ -30,6 +30,8 @@ type Props = {
 };
 
 export default function Header({ headerOnDark }: Props) {
+  const navigate = useNavigate();
+  
   const theme = useTheme();
 
   const offset = useOffSetTop();
@@ -78,7 +80,9 @@ export default function Header({ headerOnDark }: Props) {
       <Button
         variant="contained"
         color="inherit"
-        href={paths.login}
+        onClick={() => {
+          navigate('/auth/login');
+        }}
         rel="noopener"
         sx={{
           display: { xs: 'none', md: 'inline-flex' },
