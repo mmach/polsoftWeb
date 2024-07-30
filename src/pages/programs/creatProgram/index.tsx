@@ -18,18 +18,18 @@ export const defaultValues: ProgramType = {
   language: '',
   name: '',
   id: 0,
-  guid: ''
+  guid: '',
 };
 
 export default function CreateOrUpdateProgramPage() {
   const { id } = useParams();
-  const { refetchList, programs } = useProgramFacade()
-  const [values, setValues] = useState<ProgramType>()
+  const { refetchList, programs } = useProgramFacade();
+  const [values, setValues] = useState<ProgramType>();
 
   const methods = useForm({
     resolver: yupResolver(FormSchema),
     defaultValues,
-    values: values || defaultValues
+    values: values || defaultValues,
   });
   const {
     handleSubmit,
@@ -37,11 +37,11 @@ export default function CreateOrUpdateProgramPage() {
   } = methods;
 
   useEffect(() => {
-    const result = programs?.find(i => i.guid === id)
+    const result = programs?.find((i) => i.guid === id);
     if (result) {
-      setValues(result as ProgramType)
+      setValues(result as ProgramType);
     }
-  }, [id])
+  }, [id]);
 
   const onSubmit = handleSubmit(async (data) => {
     const result = await ProgramAPI.CreateNew(data as ProgramType);
@@ -54,8 +54,8 @@ export default function CreateOrUpdateProgramPage() {
         <title>Manage Programs</title>
       </Helmet>
       <FormProvider methods={methods} onSubmit={onSubmit}>
-        <Box width={1000} gap={1} padding={2} justifyContent='center' display='flex' height={700}>
-          <Box gap={16} width={600} margin='auto'>
+        <Box width={1000} gap={1} padding={2} justifyContent="center" display="flex" height={700}>
+          <Box gap={16} width={600} margin="auto">
             <Box marginBottom={1}>
               <RHFTextField name="name" label="Name" />
             </Box>
@@ -74,7 +74,6 @@ export default function CreateOrUpdateProgramPage() {
             </Box>
             <LoadingButton
               loading={isSubmitting}
-
               color="inherit"
               size="large"
               type="submit"
@@ -84,7 +83,7 @@ export default function CreateOrUpdateProgramPage() {
             </LoadingButton>
           </Box>
         </Box>
-      </FormProvider >
+      </FormProvider>
     </>
   );
 }
