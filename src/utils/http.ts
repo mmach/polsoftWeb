@@ -5,7 +5,6 @@ const initConfig = {
 
     withCredentials: false,
     handleError(error: any) {
-        //PART TO HANDLE BACKEND RESPONES
         return Promise.reject(error);
     },
     handleSuccess(succ: any) {
