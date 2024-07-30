@@ -1,9 +1,9 @@
 
+import { AxiosResponse } from 'axios';
+import { useQuery, RefetchOptions, QueryObserverResult } from '@tanstack/react-query';
+
 import { ProgramType } from 'src/types/program/programType';
 
-import { QueryObserverResult, RefetchOptions, useQuery } from '@tanstack/react-query';
-import http from 'src/utils/http';
-import { AxiosResponse } from 'axios';
 import { ProgramAPI } from './programStore';
 
 // ----------------------------------------------------------------------

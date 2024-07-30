@@ -1,9 +1,8 @@
 import Box, { BoxProps } from '@mui/material/Box';
 
-
-import { HEADER } from '../config-layout';
 import Footer from './footer';
 import Header from './header';
+import { HEADER } from '../config-layout';
 
 // ----------------------------------------------------------------------
 

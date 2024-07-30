@@ -1,4 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
+
 import { updateProgramStep } from '../services/updateProgramStep';
 import { APIProgramStep } from '../queries/useGetProgramStepsQuery';
 
@@ -9,8 +10,7 @@ type UseUpdateProgramStepMutationVariables = {
   parentStepID?: number;
 };
 
-export const useUpdateProgramStepMutation = (programID: number) => {
-  return useMutation<APIProgramStep, unknown, UseUpdateProgramStepMutationVariables>({
+export const useUpdateProgramStepMutation = (programID: number) => useMutation<APIProgramStep, unknown, UseUpdateProgramStepMutationVariables>({
     mutationKey: ['programs:steps:update', programID],
     mutationFn: (data) =>
       updateProgramStep({
@@ -21,4 +21,3 @@ export const useUpdateProgramStepMutation = (programID: number) => {
         parentStepId: data.parentStepID,
       }),
   });
-};

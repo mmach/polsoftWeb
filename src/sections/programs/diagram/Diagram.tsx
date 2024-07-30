@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
-import { ReactFlow, Controls, Node, Edge } from '@xyflow/react';
-import StepNode from './StepNode';
 import { useAtom } from 'jotai';
-import { edgesAtom, nodesAtom } from './store';
+import React, { useEffect } from 'react';
+import { Node, Edge, Controls, ReactFlow } from '@xyflow/react';
+
 import { useGetProgramStepsQuery } from 'src/features/programs/queries/useGetProgramStepsQuery';
+
+import StepNode from './StepNode';
+import { edgesAtom, nodesAtom } from './store';
 
 type DiagramProps = {
   programID: number;
@@ -24,7 +26,7 @@ const Diagram: React.FC<DiagramProps> = ({ programID }) => {
 
     const n: Node[] = [];
 
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i += 1) {
       const item = data[i];
 
       n.push({
@@ -48,25 +50,23 @@ const Diagram: React.FC<DiagramProps> = ({ programID }) => {
     // Connect All Nodes
     const e: Edge[] = [];
 
-    for (let i = 0; i < n.length; i++) {
-      if (i === 0) {
-        continue;
+    for (let i = 0; i < n.length; i += 1) {
+      if (i !== 0) {
+        const item = n[i];
+
+        e.push({
+          id: `${n[i - 1].id}-${item.id}`,
+          source: item.id,
+          target: n[i - 1].id,
+          style: {
+            stroke: '#FFFFFF',
+          },
+        });
       }
-
-      const item = n[i];
-
-      e.push({
-        id: `${n[i - 1].id}-${item.id}`,
-        source: item.id,
-        target: n[i - 1].id,
-        style: {
-          stroke: '#FFFFFF',
-        },
-      });
     }
 
     setEdges(e);
-  }, [data]);
+  }, [data, setEdges, setNodes]);
 
   // TODO: Loading & Error
   if (status === 'pending') {

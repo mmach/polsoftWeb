@@ -1,5 +1,5 @@
-import { useScroll } from 'framer-motion';
 import '@xyflow/react/dist/style.css';
+import { useScroll } from 'framer-motion';
 
 import { Box } from '@mui/system';
 
