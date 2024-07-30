@@ -46,7 +46,7 @@ export default function CreateOrUpdateProgramPage() {
   }, [id, programs])
 
   const onSubmit = handleSubmit(async (data) => {
-    const result = await ProgramAPI.CreateNew(data as ProgramType);
+    await ProgramAPI.CreateNew(data as ProgramType);
     refetchList();
   });
 
@@ -71,6 +71,10 @@ export default function CreateOrUpdateProgramPage() {
                   { value: 'Python3', label: 'Python' },
                   { value: 'JavaScript', label: 'JavaScript' },
                   { value: 'C#', label: 'C#' },
+                  { value: 'C++', label: 'C++' },
+                  { value: 'Java', label: 'Java' },
+                  { value: 'React', label: 'React' },
+                  { value: 'Rust', label: 'Rust' },
                 ]}
               />
             </Box>

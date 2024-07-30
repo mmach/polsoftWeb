@@ -1,18 +1,20 @@
-import { Helmet } from 'react-helmet-async';
-
-
-
-import { CircularProgress } from '@mui/material';
-import { Box } from '@mui/system';
 import { useAtom } from 'jotai';
-import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import { Helmet } from 'react-helmet-async';
+import { useState, useEffect } from 'react';
 import Terminal, { ColorMode, TerminalOutput } from 'react-terminal-ui';
+
+import { Box } from '@mui/system';
+import { CircularProgress } from '@mui/material';
+
 import { WorkAPI } from 'src/facade';
-import { useProgramFacade } from 'src/facade/program/useProgramFacade';
 import { WebsocketContext } from 'src/facade/socket/webSocketContext';
+import { useProgramFacade } from 'src/facade/program/useProgramFacade';
+
 import ProgramView from 'src/sections/programs/program-view';
-import { WebSocketMessageType, WorkType } from 'src/types/program/programType';
+
+import { WorkType, WebSocketMessageType } from 'src/types/program/programType';
+
 import { historyAtom } from './store';
 
 export default function RunProgram() {
@@ -20,6 +22,7 @@ export default function RunProgram() {
   const { programs } = useProgramFacade()
   const [currentRun, setCurrentRun] = useState<WorkType | undefined>()
   const [historyList] = useAtom<WebSocketMessageType[]>(historyAtom)
+
   useEffect(() => {
     const result = programs?.find(i => i.guid === id)
     if (result) {
@@ -43,6 +46,7 @@ export default function RunProgram() {
         <WebsocketContext workId={currentRun.id}>
           <ProgramView />
           <Terminal name='Program Output' colorMode={ColorMode.Dark} onInput={terminalInput => console.log(`New terminal input received: '${terminalInput}'`)}>
+            {/* {historyList.map(i => <Typewriter text={i.Output} delay={100} />)} */}
             {historyList.map(i => <TerminalOutput>{i.Output}</TerminalOutput>)}
           </Terminal>
         </WebsocketContext>

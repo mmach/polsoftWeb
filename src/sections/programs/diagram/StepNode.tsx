@@ -13,13 +13,13 @@ import { useProgramFacade } from 'src/facade/program/useProgramFacade';
 import { APIProgramStep } from 'src/features/programs/queries/useGetProgramStepsQuery';
 import { useCreateProgramStepMutation } from 'src/features/programs/mutations/useCreateProgramStepMutation';
 import { useUpdateProgramStepMutation } from 'src/features/programs/mutations/useUpdateProgramStepMutation';
+import { useDeleteProgramStepMutation } from 'src/features/programs/mutations/useDeleteProgramStepMutation';
 
 import Iconify from 'src/components/iconify';
 import FormProvider, { RHFTextField } from 'src/components/hook-form';
 
 import { InstructionsDialog } from './InstructionsDialog';
 import { edgesAtom, nodesAtom, currentStepAtom, previewCodeAtom } from './store';
-import { useDeleteProgramStepMutation } from 'src/features/programs/mutations/useDeleteProgramStepMutation';
 
 const schema = Yup.object().shape({
   name: Yup.string().required(),
@@ -61,16 +61,16 @@ export default React.memo(({ data, id }: NodeProps<StepNode>) => {
   const onSubmit = handleSubmit(async (values) => {
     const res = data.code?.length
       ? await update({
-          name: values.name,
-          description: values.instructions,
-          parentStepID: data.parentStepId,
-          stepID: +id,
-        })
+        name: values.name,
+        description: values.instructions,
+        parentStepID: data.parentStepId,
+        stepID: +id,
+      })
       : await create({
-          name: values.name,
-          description: values.instructions,
-          parentStepID: nodes.length === 0 ? undefined : +nodes[nodes.length - 1].id,
-        });
+        name: values.name,
+        description: values.instructions,
+        parentStepID: nodes.length === 0 ? undefined : +nodes[nodes.length - 1].id,
+      });
 
     setNodes(
       nodes.map((item) => {
