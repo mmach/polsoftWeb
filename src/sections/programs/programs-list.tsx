@@ -6,9 +6,12 @@ import { useProgramFacade } from "src/facade/program/useProgramFacade";
 import { MegaMenuDesktopVertical } from "src/components/mega-menu";
 
 export default function ProgramsList() {
-  const { programs } = useProgramFacade();
+  const { programs, isListFatched } = useProgramFacade();
 
-  const NAV_ITEMS = programs.map(p => ({
+  if (!isListFatched) return <></>
+
+  console.log(programs)
+  const NAV_ITEMS = programs?.map(p => ({
     title: p.name,
     path: `/programs/${p.guid}`
   }));

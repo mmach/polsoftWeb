@@ -1,19 +1,31 @@
-import { useAtom } from 'jotai';
 
 import { ProgramType } from 'src/types/program/programType';
 
-import { fetchProgramAtom } from './programStore';
+import { QueryObserverResult, RefetchOptions, useQuery } from '@tanstack/react-query';
+import http from 'src/utils/http';
+import { AxiosResponse } from 'axios';
+import { ProgramAPI } from './programStore';
 
 // ----------------------------------------------------------------------
 
 interface ReturnType {
-    programs: ProgramType[]
+    programs: ProgramType[],
+    isListFatched: boolean,
+    refetchList: (options?: RefetchOptions | undefined) => Promise<QueryObserverResult<AxiosResponse<any, any>, Error>>
 }
 
 export function useProgramFacade(): ReturnType {
-    const [programs] = useAtom(fetchProgramAtom)
+    const { isLoading, isFetched, data: result, refetch } = useQuery({
+        queryKey: ['GET_PROGRAM'],
+        queryFn: ProgramAPI.GetAll,
+    })
 
     return {
-        programs
+        programs: result?.data,
+        isListFatched: isFetched,
+        refetchList: refetch
     };
 }
+
+
+
