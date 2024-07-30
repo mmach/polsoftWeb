@@ -1,8 +1,8 @@
 import * as Yup from 'yup';
-import React, { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import { useAtom, useAtomValue } from 'jotai';
+import React, { useMemo, useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Node, Handle, Position, NodeProps } from '@xyflow/react';
 
@@ -14,8 +14,10 @@ import { APIProgramStep } from 'src/features/programs/queries/useGetProgramSteps
 import { useCreateProgramStepMutation } from 'src/features/programs/mutations/useCreateProgramStepMutation';
 import { useUpdateProgramStepMutation } from 'src/features/programs/mutations/useUpdateProgramStepMutation';
 
+import Iconify from 'src/components/iconify';
 import FormProvider, { RHFTextField } from 'src/components/hook-form';
 
+import { InstructionsDialog } from './InstructionsDialog';
 import { edgesAtom, nodesAtom, currentStepAtom, previewCodeAtom } from './store';
 
 const schema = Yup.object().shape({
@@ -125,6 +127,17 @@ export default React.memo(({ data, id }: NodeProps<StepNode>) => {
     setPreviewCode(data);
   };
 
+  // Instructions Dialog
+  const [instructionsDialogOpen, setInstructionsDialogOpen] = useState<boolean>(false);
+
+  const onInstructionsDialogOpen = () => {
+    setInstructionsDialogOpen(true);
+  };
+
+  const onInstructionsDialogClose = () => {
+    setInstructionsDialogOpen(false);
+  };
+
   // Current Step Highlight
   const currentStepID = useAtomValue(currentStepAtom);
 
@@ -153,7 +166,22 @@ export default React.memo(({ data, id }: NodeProps<StepNode>) => {
           <FormProvider methods={methods} onSubmit={onSubmit}>
             <Stack direction="column" gap={1}>
               <RHFTextField name="name" label="Name" />
-              <RHFTextField multiline rows={3} name="instructions" label="Instructions" />
+
+              <Box sx={{ position: 'relative' }}>
+                <RHFTextField multiline rows={6} name="instructions" label="Instructions" />
+
+                <ButtonBase
+                  sx={{
+                    position: 'absolute',
+                    top: (theme) => theme.spacing(1),
+                    right: (theme) => theme.spacing(1),
+                  }}
+                  onClick={onInstructionsDialogOpen}
+                >
+                  <Iconify icon="material-symbols:fullscreen" />,
+                </ButtonBase>
+              </Box>
+
               {data.code?.length ? (
                 <Button
                   fullWidth
@@ -179,6 +207,10 @@ export default React.memo(({ data, id }: NodeProps<StepNode>) => {
                 Save & Generate
               </LoadingButton>
             </Stack>
+
+            {instructionsDialogOpen ? (
+              <InstructionsDialog onClose={onInstructionsDialogClose} />
+            ) : null}
           </FormProvider>
 
           {lastNode ? (
