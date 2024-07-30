@@ -1,17 +1,17 @@
 import { Helmet } from 'react-helmet-async';
 
-import RegisterCoverView from 'src/sections/auth/register-cover-view';
+import LoginView from 'src/sections/auth/login-view';
 
 // ----------------------------------------------------------------------
 
-export default function RegisterCoverPage() {
+export default function LoginPage() {
   return (
     <>
       <Helmet>
-        <title> Register: Cover</title>
+        <title>Login</title>
       </Helmet>
 
-      <RegisterCoverView />
+      <LoginView />
     </>
   );
 }

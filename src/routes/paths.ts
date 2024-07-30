@@ -1,8 +1,7 @@
 // ----------------------------------------------------------------------
 
 export const paths = {
-
-  main:'/',
+  main: '/',
   components: {
     root: '/components',
     animate: '/components/animate',
@@ -23,14 +22,7 @@ export const paths = {
   },
   // Others
   pages: '/pages',
-  loginCover: '/auth/login-cover',
-  loginBackground: '/auth/login-background',
-  loginIllustration: '/auth/login-illustration',
-  registerCover: '/auth/register-cover',
-  registerBackground: '/auth/register-background',
-  registerIllustration: '/auth/register-illustration',
-  forgotPassword: '/auth/forgot-password',
-  verify: '/auth/verify',
-  figmaPreview:
-    'https://www.figma.com/file/Zam9QBLhV4pZf5xtNs0Lf8/%5BPreview%5D-Zone_Web.v2.3.0?type=design&node-id=59%3A680507&mode=design&t=GCVeJci5zfUu5WCy-1',
+  login: '/auth/login',
+  register: '/auth/register',
+  programs: '/programs',
 };

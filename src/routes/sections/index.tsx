@@ -7,6 +7,7 @@ import { SplashScreen } from 'src/components/loading-screen';
 
 import { authRoutes } from './auth';
 import { errorRoutes } from './error';
+import { programRoutes } from './program';
 import { componentsRoutes } from './components';
 
 // ----------------------------------------------------------------------
@@ -33,14 +34,13 @@ export default function Router() {
           index: true,
         },
 
-       
+        ...programRoutes,
 
         ...componentsRoutes,
 
         ...authRoutes,
 
         ...errorRoutes,
-
 
         { path: '*', element: <Navigate to="/404" replace /> },
       ],

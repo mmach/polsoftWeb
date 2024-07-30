@@ -1,15 +1,11 @@
 import { m } from 'framer-motion';
 
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { alpha, useTheme } from '@mui/material/styles';
 
-import { paths } from 'src/routes/paths';
-
 import { bgGradient } from 'src/theme/css';
 
-import Iconify from 'src/components/iconify';
 import { varFade, MotionViewport } from 'src/components/animate';
 
 // ----------------------------------------------------------------------
@@ -40,20 +36,6 @@ export default function HomeForDesigner() {
         <Typography variant="h2" sx={{ mt: 2, mb: 5 }}>
           For Designer
         </Typography>
-      </m.div>
-
-      <m.div variants={varFade({ distance: 40 }).inUp}>
-        <Button
-          color="primary"
-          size="large"
-          variant="contained"
-          endIcon={<Iconify icon="carbon:launch" />}
-          target="_blank"
-          rel="noopener"
-          href={paths.figmaPreview}
-        >
-          figma workspace
-        </Button>
       </m.div>
     </Box>
   );
