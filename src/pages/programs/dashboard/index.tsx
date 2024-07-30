@@ -1,13 +1,15 @@
+import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { Outlet, useNavigate, useParams } from 'react-router';
 
+import { IconButton, Typography } from '@mui/material';
+import { Box } from '@mui/system';
+
+import { useProgramFacade } from 'src/facade/program/useProgramFacade';
 
 import { ProgramType } from 'src/types/program/programType';
 
-import { CircularProgress, IconButton, Typography } from '@mui/material';
-import { Box } from '@mui/system';
-import { useEffect, useState } from 'react';
-import { Outlet, useNavigate, useParams } from 'react-router';
-import { useProgramFacade } from 'src/facade/program/useProgramFacade';
+import { CircularProgress } from '@mui/material';
 
 export default function DashboardProgramPage() {
   const { id } = useParams();

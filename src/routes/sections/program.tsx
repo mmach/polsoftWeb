@@ -1,10 +1,9 @@
-import { strict } from 'assert';
 import { lazy } from 'react';
 
 import AuthLayout from 'src/layouts/auth';
-import CreateOrUpdateProgramPage from 'src/pages/programs/creatProgram';
-import DashboardProgramPage from 'src/pages/programs/dashboard';
 import EmptyProgramListScreen from 'src/pages/programs/empty';
+import DashboardProgramPage from 'src/pages/programs/dashboard';
+import CreateOrUpdateProgramPage from 'src/pages/programs/creatProgram';
 import RunProgram from 'src/pages/programs/runProgram';
 
 import ProgramView from 'src/sections/programs/program-view';
@@ -31,39 +30,28 @@ export const programRoutes = [
       },
       {
         path: ':id',
-        element: (
-          <DashboardProgramPage />
-        ),
+        element: <DashboardProgramPage />,
         children: [
           {
             index: true,
-            element: (
-              <ProgramView  />
-            ),
+            element: <ProgramView />,
           },
           {
             path: 'run',
-            element: (
-              <RunProgram />
-            ),
+            element: <RunProgram />,
             children: [
               {
                 index: true,
-                element: (
-                  <CreateOrUpdateProgramPage />
-                )
-              }
-            ]
+                element: <CreateOrUpdateProgramPage />,
+              },
+            ],
           },
           {
             path: 'edit',
-            element: (
-              <CreateOrUpdateProgramPage />
-            )
-          }
-        ]
+            element: <CreateOrUpdateProgramPage />,
+          },
+        ],
       },
-
     ],
   },
 ];

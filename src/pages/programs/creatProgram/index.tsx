@@ -68,7 +68,7 @@ export default function CreateOrUpdateProgramPage() {
                 label="Languages"
                 spacing={4}
                 options={[
-                  { value: 'Python', label: 'Python' },
+                  { value: 'Python3', label: 'Python' },
                   { value: 'JavaScript', label: 'JavaScript' },
                   { value: 'C#', label: 'C#' },
                 ]}
