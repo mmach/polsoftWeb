@@ -8,10 +8,10 @@ const initConfig = {
         return Promise.reject(error);
     },
     handleSuccess(succ: any) {
-        return Promise.resolve(succ)
+        return Promise.resolve(succ.data)
     },
     customHeaders: {
-        Authorization: 'Basic 123123123123',
+        Authorization: `Basic ${localStorage.getItem('token')}`,
     }
 }
 
@@ -29,7 +29,7 @@ class Http {
         this.service = service;
     }
 
- 
+
     public get(path: string) {
         return this.service.request({
             method: "GET",

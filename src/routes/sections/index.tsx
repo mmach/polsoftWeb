@@ -34,13 +34,13 @@ export default function Router() {
           index: true,
         },
 
-        ...programRoutes,
-
         ...componentsRoutes,
 
         ...authRoutes,
 
         ...errorRoutes,
+
+        ...programRoutes,
 
         { path: '*', element: <Navigate to="/404" replace /> },
       ],
