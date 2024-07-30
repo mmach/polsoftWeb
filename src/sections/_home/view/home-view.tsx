@@ -30,30 +30,56 @@ export default function HomeView() {
 
       
       <MarketingTeamAbout members={[
-        {
-          id: '1',
-          role: 'Nazwa Roli',
-          name: 'Użytkownik',
-          photo: '/assets/images/portrait/portrait_0.jpg'
-        },
-        {
-          id: '2',
-          role: 'Nazwa Roli',
-          name: 'Użytkownik',
-          photo: '/assets/images/portrait/portrait_1.jpg'
-        },
-        {
-          id: '3',
-          role: 'Nazwa Roli',
-          name: 'Użytkownik',
-          photo: '/assets/images/portrait/portrait_2.jpg'
-        },
-        {
-          id: '4',
-          role: 'Nazwa Roli',
-          name: 'Użytkownik',
-          photo: '/assets/images/portrait/portrait_3.jpg'},
-        { id: '5', role: 'Nazwa Roli', name: 'Użytkownik', photo: '/assets/images/portrait/portrait_4.jpg' },]} />
+  {
+    id: '4',
+    role: 'Business Analyst',
+    name: 'Anna Dyrcz',
+    photo: '/assets/images/portrait/Ania.jpg'
+  },
+  {
+    id: '7',
+    role: 'Full Stack Developer',
+    name: 'Karol Jarosz',
+    photo: '/assets/images/portrait/KJ.jpg'
+  },
+  {
+    id: '1',
+    role: 'Full Stack Developer',
+    name: 'Krzysztof Mach',
+    photo: '/assets/images/portrait/KM.jpg'
+  },
+  {
+    id: '8',
+    role: 'Full Stack Developer',
+    name: 'Krzysztof Szymański',
+    photo: '/assets/images/portrait/KS.jpg'
+  },
+  {
+    id: '3',
+    role: 'Full Stack Developer',
+    name: 'Michal Mach',
+    photo: '/assets/images/portrait/MM.jpg'
+  },
+  {
+    id: '5',
+    role: 'Business Analyst',
+    name: 'Pawel Pyka',
+    photo: '/assets/images/portrait/PP.jpg'
+  },
+  {
+    id: '2',
+    role: 'Full Stack Developer',
+    name: 'Rafal Bierowiec',
+    photo: '/assets/images/portrait/RB.jpg'
+  },
+  {
+    id: '6',
+    role: 'Full Stack Developer',
+    name: 'Tomasz Barczyk',
+    photo: '/assets/images/portrait/TB.jpg'
+  },
+]} />
+
 
 
       <HomeForDesigner />
