@@ -11,6 +11,7 @@ import { useTheme } from '@mui/material/styles';
 
 import { useOffSetTop } from 'src/hooks/use-off-set-top';
 import { useResponsive } from 'src/hooks/use-responsive';
+import { useUserSession } from 'src/hooks/use-user-session';
 
 import { bgBlur } from 'src/theme/css';
 
@@ -31,7 +32,8 @@ type Props = {
 
 export default function Header({ headerOnDark }: Props) {
   const navigate = useNavigate();
-  
+  const { isUserLogged } = useUserSession();
+
   const theme = useTheme();
 
   const offset = useOffSetTop();
@@ -77,7 +79,7 @@ export default function Header({ headerOnDark }: Props) {
         <Box sx={{ flexGrow: { xs: 1, md: 'unset' } }} />
       </>
 
-      <Button
+      {!isUserLogged && (<Button
         variant="contained"
         color="inherit"
         onClick={() => {
@@ -89,7 +91,8 @@ export default function Header({ headerOnDark }: Props) {
         }}
       >
         Login
-      </Button>
+      </Button>)}
+
 
       {!mdUp && <NavMobile data={navConfig} />}
     </>
