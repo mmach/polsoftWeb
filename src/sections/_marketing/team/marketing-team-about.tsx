@@ -20,7 +20,7 @@ export default function MarketingTeamAbout({ members }: Props) {
       }}
     >
       <Typography variant="h2" sx={{ textAlign: 'center' }}>
-        Great Team Is The Key
+      Meet Our Hackathon Team
       </Typography>
 
       <Typography
@@ -33,8 +33,7 @@ export default function MarketingTeamAbout({ members }: Props) {
           color: 'text.secondary',
         }}
       >
-        Since wire-frame renderings are relatively simple and fast to calculate, they are often used
-        in cases
+        Our team of dedicated professionals is the driving force behind our innovative solutions. Together, we turn ideas into reality.
       </Typography>
 
       <Box

@@ -11,33 +11,32 @@ const SERVICES = [
   {
     title: 'Host Your App',
     description: 'Secure and scalable hosting solutions to ensure your applications are always available and performing at their best.',
-    icon: '/assets/icons/ic_hosting.svg',
-    path: paths.marketing.services,
+    icon: '/assets/icons/ic_web_programming.svg'
   },
   {
     title: 'Automated Deployment, CI/CD',
     description: 'Streamline your deployment process with automated CI/CD tools, reducing downtime and accelerating your release cycle.',
-    icon: '/assets/icons/ic_ci_cd.svg',
+    icon: '/assets/icons/ic_optimization.svg',
   },
   {
     title: 'Automatic Build',
     description: 'Efficient and reliable build automation to compile and test your code, catching errors early in the development process.',
-    icon: '/assets/icons/ic_build.svg',
+    icon: '/assets/icons/ic_sketch_design.svg',
   },
   {
     title: 'Automatic Run Your Code',
     description: 'Execute your code with precision and speed in our optimized execution environment, ensuring smooth performance and instant feedback.',
-    icon: '/assets/icons/ic_run_code.svg',
+    icon: '/assets/icons/ic_real_time.svg',
   },
   {
     title: 'Create App in 5 Minutes',
     description: 'Accelerate your development process and create fully functional applications in just five minutes with our intuitive tools and pre-built templates.',
-    icon: '/assets/icons/ic_app_creation.svg',
+    icon: '/assets/icons/ic_statistics.svg',
   },
   {
     title: 'Instant Resolution',
     description: 'Resolve issues instantly with our advanced troubleshooting and support tools, providing real-time diagnostics and automated fixes.',
-    icon: '/assets/icons/ic_resolution.svg',
+    icon: '/assets/icons/ic_social_media.svg',
   },
 ];
 
@@ -53,7 +52,7 @@ export default function MarketingServicesInclude() {
         pb: { xs: 10, md: 15 },
       }}
     >
-      <Typography variant="h2">Services Include</Typography>
+      <Typography variant="h2">Discover features</Typography>
 
       <Typography
         sx={{
@@ -64,7 +63,7 @@ export default function MarketingServicesInclude() {
           mb: { xs: 8, md: 10 },
         }}
       >
-        Nunc nonummy metus. Donec elit libero, sodales nec, volutpat a, suscipit non, turpis.
+        Unlock the full potential of your development process with our cutting-edge services designed to enhance efficiency, reliability, and performance.
       </Typography>
 
       <Box

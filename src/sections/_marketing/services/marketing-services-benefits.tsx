@@ -69,7 +69,7 @@ export default function MarketingServicesBenefits() {
             mb: { xs: 8, md: 10 },
           }}
         >
-          Nunc nonummy metus. Donec elit libero, sodales nec, volutpat a, suscipit non, turpis.
+          dNunc nonummy metus. Donec elit libero, sodales nec, volutpat a, suscipit non, turpis.
         </Typography>
 
         <Box
