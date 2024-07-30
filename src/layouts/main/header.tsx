@@ -44,21 +44,7 @@ export default function Header({ headerOnDark }: Props) {
         <Logo />
 
         <Link href="https://zone-docs.vercel.app/changelog" target="_blank" rel="noopener">
-          <Label
-            color="info"
-            sx={{
-              ml: 0.5,
-              px: 0.5,
-              top: -14,
-              left: 60,
-              height: 20,
-              fontSize: 11,
-              cursor: 'pointer',
-              position: 'absolute',
-            }}
-          >
-            v2.4.0
-          </Label>
+          
         </Link>
       </Box>
 
@@ -71,7 +57,7 @@ export default function Header({ headerOnDark }: Props) {
             display: { xs: 'none', md: 'flex' },
           }}
         >
-          <NavDesktop data={navConfig} />
+         
         </Stack>
 
         <Box sx={{ flexGrow: { xs: 1, md: 'unset' } }} />
@@ -79,9 +65,9 @@ export default function Header({ headerOnDark }: Props) {
 
       <Stack spacing={2} direction="row" alignItems="center" justifyContent="flex-end">
         <Stack spacing={1} direction="row" alignItems="center">
-          <Searchbar />
+          
 
-          <SettingsButton />
+          
         </Stack>
 
         <Button
@@ -94,7 +80,7 @@ export default function Header({ headerOnDark }: Props) {
             display: { xs: 'none', md: 'inline-flex' },
           }}
         >
-          Buy Now
+          Enter App
         </Button>
       </Stack>
 
