@@ -3,13 +3,8 @@ import { _pricingHome } from 'src/_mock';
 import ScrollProgress from 'src/components/scroll-progress';
 import HomeHero from '../home-hero';
 import HomeFAQs from '../home-faqs';
-import HomeNewStart from '../home-new-start';
-import HomeCombination from '../home-combination';
-import HomeForDesigner from '../home-for-designer';
-import HomeAdvertisement from '../home-advertisement';
 import MarketingTeamAbout from 'src/sections/_marketing/team/marketing-team-about';
 import MarketingServicesInclude from 'src/sections/_marketing/services/marketing-services-include';
-import MarketingAbout from 'src/sections/_marketing/about/marketing-about';
 import MarketingLandingAbout from 'src/sections/_marketing/landing/marketing-landing-about';
 
 
