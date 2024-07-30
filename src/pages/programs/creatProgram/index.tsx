@@ -8,6 +8,8 @@ import { ProgramType } from 'src/types/program/programType';
 
 import { LoadingButton } from '@mui/lab';
 import { Box } from '@mui/system';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
 import { ProgramAPI } from 'src/facade';
 import { useProgramFacade } from 'src/facade/program/useProgramFacade';
 import { FormSchema } from './schema';
@@ -19,17 +21,27 @@ export const defaultValues: ProgramType = {
   guid: ''
 };
 
-export default function CreateProgramPage() {
-  const { refetchList } = useProgramFacade()
+export default function CreateOrUpdateProgramPage() {
+  const { id } = useParams();
+  const { refetchList, programs } = useProgramFacade()
+  const [values, setValues] = useState<ProgramType>()
+
   const methods = useForm({
     resolver: yupResolver(FormSchema),
     defaultValues,
+    values: values || defaultValues
   });
   const {
     handleSubmit,
     formState: { isSubmitting },
-
   } = methods;
+
+  useEffect(() => {
+    const result = programs?.find(i => i.guid === id)
+    if (result) {
+      setValues(result as ProgramType)
+    }
+  }, [id])
 
   const onSubmit = handleSubmit(async (data) => {
     const result = await ProgramAPI.CreateNew(data as ProgramType);
