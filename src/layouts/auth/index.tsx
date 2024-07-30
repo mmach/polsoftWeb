@@ -3,9 +3,10 @@ import { useNavigate } from 'react-router-dom';
 
 import Box, { BoxProps } from '@mui/material/Box';
 
-import { HEADER } from '../config-layout';
-import Header from '../common/header-simple';
+import { useUserSession } from 'src/hooks/use-user-session';
 
+import Header from '../main/header';
+import { HEADER } from '../config-layout';
 // ----------------------------------------------------------------------
 
 type Props = BoxProps & {
@@ -23,24 +24,13 @@ export default function AuthLayout({
 }: Props) {
 
     const navigate = useNavigate();
-
-    const checkUserLogged = () => {
-        const userToken = localStorage.getItem('token')
-
-        if (!userToken) {
-            navigate('/');
-        }
-    }
-
-    useEffect(checkUserLogged, [navigate]);
+    const { isUserLogged } = useUserSession();
 
     useEffect(() => {
-        window.addEventListener('storage', checkUserLogged)
-
-        return () => {
-            window.removeEventListener('storage', checkUserLogged)
+        if (!isUserLogged) {
+            navigate('/');
         }
-    })
+    }, [isUserLogged, navigate]);
 
     return (
         <Box
@@ -52,7 +42,7 @@ export default function AuthLayout({
             }}
             {...other}
         >
-            <Header />
+            <Header headerOnDark={headerOnDark} />
 
             <Box component="main" sx={{ flexGrow: 1 }}>
                 {!(disabledSpacing || headerOnDark) && (

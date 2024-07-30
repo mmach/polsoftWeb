@@ -11,6 +11,8 @@ import { useTheme } from '@mui/material/styles';
 
 import { useOffSetTop } from 'src/hooks/use-off-set-top';
 import { useResponsive } from 'src/hooks/use-responsive';
+import { useUserSession } from 'src/hooks/use-user-session';
+import { useNavigationConfig } from 'src/hooks/use-navigation-config';
 
 import { bgBlur } from 'src/theme/css';
 
@@ -20,7 +22,6 @@ import Label from 'src/components/label';
 import NavMobile from './nav/mobile';
 import NavDesktop from './nav/desktop';
 import { HEADER } from '../config-layout';
-import { navConfig } from './config-navigation';
 import HeaderShadow from '../common/header-shadow';
 
 // ----------------------------------------------------------------------
@@ -31,7 +32,9 @@ type Props = {
 
 export default function Header({ headerOnDark }: Props) {
   const navigate = useNavigate();
-  
+  const { isUserLogged } = useUserSession();
+  const { navConfig } = useNavigationConfig();
+
   const theme = useTheme();
 
   const offset = useOffSetTop();
@@ -77,7 +80,7 @@ export default function Header({ headerOnDark }: Props) {
         <Box sx={{ flexGrow: { xs: 1, md: 'unset' } }} />
       </>
 
-      <Button
+      {!isUserLogged && (<Button
         variant="contained"
         color="inherit"
         onClick={() => {
@@ -89,7 +92,23 @@ export default function Header({ headerOnDark }: Props) {
         }}
       >
         Login
-      </Button>
+      </Button>)}
+
+      {isUserLogged && (<Button
+        variant="contained"
+        color="inherit"
+        onClick={() => {
+          localStorage.removeItem('token');
+          navigate('/')
+        }}
+        rel="noopener"
+        sx={{
+          display: { xs: 'none', md: 'inline-flex' },
+        }}
+      >
+        Logout
+      </Button>)}
+
 
       {!mdUp && <NavMobile data={navConfig} />}
     </>
