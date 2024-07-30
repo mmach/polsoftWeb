@@ -34,10 +34,6 @@ export default function Router() {
           index: true,
         },
 
-
-
-
-
         ...componentsRoutes,
 
         ...authRoutes,
@@ -45,6 +41,7 @@ export default function Router() {
         ...errorRoutes,
 
         ...programRoutes,
+
         { path: '*', element: <Navigate to="/404" replace /> },
       ],
     },
