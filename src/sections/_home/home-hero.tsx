@@ -57,15 +57,14 @@ export default function HomeHero() {
               }}
             >
               <Typography variant="h1">
-                Create Your <br /> Website Today with
+                Create Your <br /> Application Today with
                 <Box component="span" sx={{ color: 'primary.main' }}>
-                  {` ZONE`}
+                  {` AppZone `}
                 </Box>
               </Typography>
 
               <Typography sx={{ color: 'text.secondary' }}>
-                The ZONE is built on top of MUI, a powerful library that provides flexible,
-                customizable, and easy-to-use components.
+              AppZone is an innovative platform that transforms diagrams into fully functional applications. It provides developers with flexible, customizable, and easy-to-use tools to streamline the app-building process.
               </Typography>
 
               <Button
@@ -77,7 +76,7 @@ export default function HomeHero() {
                 rel="noopener"
                 href={paths.figmaPreview}
               >
-                figma workspace
+                Go to AppZone Builder
               </Button>
 
               <Stack spacing={3}>
@@ -85,7 +84,7 @@ export default function HomeHero() {
                   AVAILABLE FOR
                 </Typography>
                 <Stack direction="row" spacing={2.5}>
-                  {['js', 'ts', 'figma', 'nextjs', 'vite'].map((icon) => (
+                  {['python', 'js', 'ts'].map((icon) => (
                     <Box
                       key={icon}
                       component="img"
