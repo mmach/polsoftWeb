@@ -1,6 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
-import { APIProgramStep } from '../queries/useGetProgramStepsQuery';
+
 import { removeProgramStep } from '../services/removeProgramStep';
+import { APIProgramStep } from '../queries/useGetProgramStepsQuery';
 
 export const useDeleteProgramStepMutation = (stepID: number) =>
   useMutation<APIProgramStep, unknown, void>({

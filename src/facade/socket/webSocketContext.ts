@@ -1,8 +1,9 @@
-import { useAtom, useSetAtom } from "jotai";
+import { useSetAtom } from "jotai";
 import React, { useEffect } from "react";
-import { useParams } from 'react-router';
 import useWebSocket from "react-use-websocket";
+
 import { currentStepAtom } from "src/sections/programs/diagram/store";
+
 import { WebSocketMessageType } from "src/types/program/programType";
 
 type Prop = {
