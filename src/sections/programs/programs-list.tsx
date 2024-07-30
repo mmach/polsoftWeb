@@ -1,7 +1,9 @@
+import { Box, Stack } from "@mui/system";
 import { Card, Typography } from "@mui/material";
-import { Stack, Box } from "@mui/system";
+
 import { _mock } from "src/_mock";
 import { useProgramFacade } from "src/facade/program/useProgramFacade";
+
 import { MegaMenuDesktopVertical } from "src/components/mega-menu";
 
 export default function ProgramsList() {
