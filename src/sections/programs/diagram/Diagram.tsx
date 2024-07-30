@@ -19,7 +19,18 @@ const Diagram: React.FC<DiagramProps> = ({ programID }) => {
 
   useEffect(() => {
     if (!data?.length) {
-      setNodes([]);
+      setNodes([
+        {
+          id: '1',
+          type: 'step',
+          position: {
+            x: 0,
+            y: 0,
+          },
+          data: {},
+        },
+      ]);
+
       setEdges([]);
 
       return;

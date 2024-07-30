@@ -1,8 +1,8 @@
 import * as Yup from 'yup';
-import React, { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import { useAtom, useAtomValue } from 'jotai';
+import React, { useMemo, useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Node, Handle, Position, NodeProps } from '@xyflow/react';
 
@@ -14,9 +14,12 @@ import { APIProgramStep } from 'src/features/programs/queries/useGetProgramSteps
 import { useCreateProgramStepMutation } from 'src/features/programs/mutations/useCreateProgramStepMutation';
 import { useUpdateProgramStepMutation } from 'src/features/programs/mutations/useUpdateProgramStepMutation';
 
+import Iconify from 'src/components/iconify';
 import FormProvider, { RHFTextField } from 'src/components/hook-form';
 
+import { InstructionsDialog } from './InstructionsDialog';
 import { edgesAtom, nodesAtom, currentStepAtom, previewCodeAtom } from './store';
+import { useDeleteProgramStepMutation } from 'src/features/programs/mutations/useDeleteProgramStepMutation';
 
 const schema = Yup.object().shape({
   name: Yup.string().required(),
@@ -79,12 +82,22 @@ export default React.memo(({ data, id }: NodeProps<StepNode>) => {
           ...item,
           data: {
             ...item.data,
-            code: res?.code ?? '',
+            ...res,
           },
         };
       })
     );
   });
+
+  // Node Deletion
+  const { mutateAsync: remove } = useDeleteProgramStepMutation(+id);
+
+  const onNodeRemove = async () => {
+    await remove();
+
+    setNodes(nodes.filter((item) => item.id !== id));
+    setEdges(edges.filter((item) => item.source !== id && item.target !== id));
+  };
 
   // New Nodes Creation
   const onRightNodeCreate = () => {
@@ -125,6 +138,17 @@ export default React.memo(({ data, id }: NodeProps<StepNode>) => {
     setPreviewCode(data);
   };
 
+  // Instructions Dialog
+  const [instructionsDialogOpen, setInstructionsDialogOpen] = useState<boolean>(false);
+
+  const onInstructionsDialogOpen = () => {
+    setInstructionsDialogOpen(true);
+  };
+
+  const onInstructionsDialogClose = () => {
+    setInstructionsDialogOpen(false);
+  };
+
   // Current Step Highlight
   const currentStepID = useAtomValue(currentStepAtom);
 
@@ -153,7 +177,22 @@ export default React.memo(({ data, id }: NodeProps<StepNode>) => {
           <FormProvider methods={methods} onSubmit={onSubmit}>
             <Stack direction="column" gap={1}>
               <RHFTextField name="name" label="Name" />
-              <RHFTextField multiline rows={3} name="instructions" label="Instructions" />
+
+              <Box sx={{ position: 'relative' }}>
+                <RHFTextField multiline rows={6} name="instructions" label="Instructions" />
+
+                <ButtonBase
+                  sx={{
+                    position: 'absolute',
+                    top: (theme) => theme.spacing(1),
+                    right: (theme) => theme.spacing(1),
+                  }}
+                  onClick={onInstructionsDialogOpen}
+                >
+                  <Iconify icon="material-symbols:fullscreen" />,
+                </ButtonBase>
+              </Box>
+
               {data.code?.length ? (
                 <Button
                   fullWidth
@@ -167,6 +206,7 @@ export default React.memo(({ data, id }: NodeProps<StepNode>) => {
                   Preview Code
                 </Button>
               ) : null}
+
               <LoadingButton
                 fullWidth
                 color="inherit"
@@ -179,23 +219,46 @@ export default React.memo(({ data, id }: NodeProps<StepNode>) => {
                 Save & Generate
               </LoadingButton>
             </Stack>
+
+            {instructionsDialogOpen ? (
+              <InstructionsDialog onClose={onInstructionsDialogClose} />
+            ) : null}
           </FormProvider>
 
           {lastNode ? (
-            <ButtonBase
-              sx={{
-                position: 'absolute',
-                top: '-16px',
-                right: '-52px',
-                backgroundColor: '#FFFFFF',
-                height: '32px',
-                width: '32px',
-                borderRadius: '4px',
-              }}
-              onClick={onRightNodeCreate}
-            >
-              +
-            </ButtonBase>
+            <>
+              <ButtonBase
+                sx={{
+                  position: 'absolute',
+                  top: '-16px',
+                  right: '-52px',
+                  backgroundColor: '#FFFFFF',
+                  height: '32px',
+                  width: '32px',
+                  borderRadius: '4px',
+                }}
+                onClick={onRightNodeCreate}
+              >
+                +
+              </ButtonBase>
+
+              {nodes.length > 1 ? (
+                <ButtonBase
+                  sx={{
+                    position: 'absolute',
+                    top: '24px',
+                    right: '-52px',
+                    backgroundColor: '#FFFFFF',
+                    height: '32px',
+                    width: '32px',
+                    borderRadius: '4px',
+                  }}
+                  onClick={onNodeRemove}
+                >
+                  -
+                </ButtonBase>
+              ) : null}
+            </>
           ) : null}
         </Stack>
       </Box>

@@ -1,10 +1,11 @@
+import { useNavigate } from 'react-router';
+
 import { Box, Stack } from '@mui/system';
-import { Card, IconButton, Link, Typography } from '@mui/material';
+import { Card, IconButton, Typography } from '@mui/material';
 
 import { useProgramFacade } from 'src/facade/program/useProgramFacade';
 
 import { MegaMenuDesktopVertical } from 'src/components/mega-menu';
-import { useNavigate } from 'react-router';
 
 export default function ProgramsList() {
   const { programs, isListFatched } = useProgramFacade();
