@@ -46,16 +46,15 @@ export default function HomeNewStart() {
             <Typography variant="h2" sx={{ my: 3 }}>
               The
               <Box component="span" sx={{ color: 'primary.main' }}>
-                {` ZONE `}
+                {` AppZone  `}
               </Box>
-              UI Kit
+              Builder
             </Typography>
           </m.div>
 
           <m.div variants={varFade().inDown}>
             <Typography sx={{ color: 'text.secondary' }}>
-              Modern ui kit to save your time, boost your creativity. Neat and super stylish layout
-              ready to help with your projects
+            Modern app builder to save your time, boost your creativity. Effortlessly create applications using diagrams, transforming your ideas into reality with ease.
             </Typography>
           </m.div>
         </Box>
