@@ -19,6 +19,7 @@ import FormProvider, { RHFTextField } from 'src/components/hook-form';
 
 import { InstructionsDialog } from './InstructionsDialog';
 import { edgesAtom, nodesAtom, currentStepAtom, previewCodeAtom } from './store';
+import { useDeleteProgramStepMutation } from 'src/features/programs/mutations/useDeleteProgramStepMutation';
 
 const schema = Yup.object().shape({
   name: Yup.string().required(),
@@ -81,12 +82,22 @@ export default React.memo(({ data, id }: NodeProps<StepNode>) => {
           ...item,
           data: {
             ...item.data,
-            code: res?.code ?? '',
+            ...res,
           },
         };
       })
     );
   });
+
+  // Node Deletion
+  const { mutateAsync: remove } = useDeleteProgramStepMutation(+id);
+
+  const onNodeRemove = async () => {
+    await remove();
+
+    setNodes(nodes.filter((item) => item.id !== id));
+    setEdges(edges.filter((item) => item.source !== id && item.target !== id));
+  };
 
   // New Nodes Creation
   const onRightNodeCreate = () => {
@@ -195,6 +206,7 @@ export default React.memo(({ data, id }: NodeProps<StepNode>) => {
                   Preview Code
                 </Button>
               ) : null}
+
               <LoadingButton
                 fullWidth
                 color="inherit"
@@ -214,20 +226,39 @@ export default React.memo(({ data, id }: NodeProps<StepNode>) => {
           </FormProvider>
 
           {lastNode ? (
-            <ButtonBase
-              sx={{
-                position: 'absolute',
-                top: '-16px',
-                right: '-52px',
-                backgroundColor: '#FFFFFF',
-                height: '32px',
-                width: '32px',
-                borderRadius: '4px',
-              }}
-              onClick={onRightNodeCreate}
-            >
-              +
-            </ButtonBase>
+            <>
+              <ButtonBase
+                sx={{
+                  position: 'absolute',
+                  top: '-16px',
+                  right: '-52px',
+                  backgroundColor: '#FFFFFF',
+                  height: '32px',
+                  width: '32px',
+                  borderRadius: '4px',
+                }}
+                onClick={onRightNodeCreate}
+              >
+                +
+              </ButtonBase>
+
+              {nodes.length > 1 ? (
+                <ButtonBase
+                  sx={{
+                    position: 'absolute',
+                    top: '24px',
+                    right: '-52px',
+                    backgroundColor: '#FFFFFF',
+                    height: '32px',
+                    width: '32px',
+                    borderRadius: '4px',
+                  }}
+                  onClick={onNodeRemove}
+                >
+                  -
+                </ButtonBase>
+              ) : null}
+            </>
           ) : null}
         </Stack>
       </Box>
