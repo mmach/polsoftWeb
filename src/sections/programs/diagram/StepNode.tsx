@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { NodeProps, Handle, Position, Node } from '@xyflow/react';
 import * as Yup from 'yup';
 import { useForm } from 'react-hook-form';
@@ -8,25 +8,40 @@ import { Box, Button, ButtonBase, Stack } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { useAtom } from 'jotai';
 import { edgesAtom, nodesAtom } from './store';
+import { useParams } from 'react-router-dom';
+import { useProgramFacade } from 'src/facade/program/useProgramFacade';
+import { useCreateProgramStepMutation } from 'src/features/programs/mutations/useCreateProgramStepMutation';
+import { useUpdateProgramStepMutation } from 'src/features/programs/mutations/useUpdateProgramStepMutation';
 
 const schema = Yup.object().shape({
   name: Yup.string().required(),
   instructions: Yup.string().required(),
 });
 
-const defaultValues = {
-  name: '',
-  instructions: '',
-};
-
 type StepNode = Node<
   {
     code?: string;
+    name: string;
+    description: string;
+    parentStepID?: number;
   },
   'step'
 >;
 
 export default React.memo(({ data, id }: NodeProps<StepNode>) => {
+  const { id: programGUID } = useParams();
+  const { programs } = useProgramFacade();
+
+  const defaultValues = {
+    name: data.name ?? '',
+    instructions: data.description ?? '',
+  };
+
+  // Note: This will be always defined (parent guards value)
+  const programID = useMemo<number>(() => {
+    return programs?.find((program) => program.guid === programGUID)!.id;
+  }, [programs, programGUID]);
+
   const [nodes, setNodes] = useAtom(nodesAtom);
   const [edges, setEdges] = useAtom(edgesAtom);
 
@@ -38,7 +53,24 @@ export default React.memo(({ data, id }: NodeProps<StepNode>) => {
 
   const { handleSubmit, formState } = methods;
 
-  const onSubmit = handleSubmit(async (data) => {
+  // Handle Step Creation
+  const { mutateAsync: create } = useCreateProgramStepMutation(programID);
+  const { mutateAsync: update } = useUpdateProgramStepMutation(programID);
+
+  const onSubmit = handleSubmit(async (values) => {
+    const res = !!data.code?.length
+      ? await update({
+          name: values.name,
+          description: values.instructions,
+          parentStepID: data.parentStepID,
+          stepID: +id,
+        })
+      : await create({
+          name: values.name,
+          description: values.instructions,
+          parentStepID: nodes.length === 0 ? undefined : +nodes[nodes.length - 1].id,
+        });
+
     setNodes(
       nodes.map((item) => {
         if (item.id !== id) {
@@ -49,7 +81,7 @@ export default React.memo(({ data, id }: NodeProps<StepNode>) => {
           ...item,
           data: {
             ...item.data,
-            code: 'test',
+            code: res?.code ?? '',
           },
         };
       })

@@ -10,13 +10,18 @@ export default function ProgramView() {
   const { programs } = useProgramFacade();
 
   const programID = useMemo<number | undefined>(() => {
-    return programs.find((program) => program.guid === id)?.id;
+    return programs?.find((program) => program.guid === id)?.id;
   }, [programs, id]);
+
+  // TODO: Error Page
+  if (!programID) {
+    return null;
+  }
 
   return (
     <Grid container columnSpacing={3} alignItems="center" sx={{ height: '420px' }}>
       <Grid item xs={12} sx={{ height: '420px' }}>
-        <Diagram />
+        <Diagram programID={programID} />
       </Grid>
     </Grid>
   );

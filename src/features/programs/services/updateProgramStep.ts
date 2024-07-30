@@ -3,8 +3,9 @@ import http from 'src/utils/http';
 export type UpdateProgramStepDTO = {
   name: string;
   description: string;
-  stepId: number;
+  id: number;
   programId: number;
+  parentStepId?: number;
 };
 
 export const updateProgramStep = async (data: UpdateProgramStepDTO) => {
