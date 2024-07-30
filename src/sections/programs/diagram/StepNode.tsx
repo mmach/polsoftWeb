@@ -1,17 +1,21 @@
-import React, { useMemo } from 'react';
-import { NodeProps, Handle, Position, Node } from '@xyflow/react';
 import * as Yup from 'yup';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import FormProvider, { RHFTextField } from 'src/components/hook-form';
-import { Box, Button, ButtonBase, Stack } from '@mui/material';
-import { LoadingButton } from '@mui/lab';
 import { useAtom } from 'jotai';
-import { edgesAtom, nodesAtom } from './store';
+import React, { useMemo } from 'react';
+import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { Node, Handle, Position, NodeProps } from '@xyflow/react';
+
+import { LoadingButton } from '@mui/lab';
+import { Box, Stack, Button, ButtonBase } from '@mui/material';
+
 import { useProgramFacade } from 'src/facade/program/useProgramFacade';
 import { useCreateProgramStepMutation } from 'src/features/programs/mutations/useCreateProgramStepMutation';
 import { useUpdateProgramStepMutation } from 'src/features/programs/mutations/useUpdateProgramStepMutation';
+
+import FormProvider, { RHFTextField } from 'src/components/hook-form';
+
+import { edgesAtom, nodesAtom } from './store';
 
 const schema = Yup.object().shape({
   name: Yup.string().required(),
@@ -38,9 +42,7 @@ export default React.memo(({ data, id }: NodeProps<StepNode>) => {
   };
 
   // Note: This will be always defined (parent guards value)
-  const programID = useMemo<number>(() => {
-    return programs?.find((program) => program.guid === programGUID)!.id;
-  }, [programs, programGUID]);
+  const programID = useMemo<number>(() => programs?.find((program) => program.guid === programGUID)!.id, [programs, programGUID]);
 
   const [nodes, setNodes] = useAtom(nodesAtom);
   const [edges, setEdges] = useAtom(edgesAtom);
@@ -58,7 +60,7 @@ export default React.memo(({ data, id }: NodeProps<StepNode>) => {
   const { mutateAsync: update } = useUpdateProgramStepMutation(programID);
 
   const onSubmit = handleSubmit(async (values) => {
-    const res = !!data.code?.length
+    const res = data.code?.length
       ? await update({
           name: values.name,
           description: values.instructions,

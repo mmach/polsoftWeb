@@ -1,4 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
+
 import { createProgramStep } from '../services/createProgramStep';
 import { APIProgramStep } from '../queries/useGetProgramStepsQuery';
 
@@ -8,8 +9,7 @@ type UseCreateProgramStepMutationVariables = {
   parentStepID?: number;
 };
 
-export const useCreateProgramStepMutation = (programID: number) => {
-  return useMutation<APIProgramStep, unknown, UseCreateProgramStepMutationVariables>({
+export const useCreateProgramStepMutation = (programID: number) => useMutation<APIProgramStep, unknown, UseCreateProgramStepMutationVariables>({
     mutationKey: ['programs:steps:create', programID],
     mutationFn: (data) =>
       createProgramStep({
@@ -19,4 +19,3 @@ export const useCreateProgramStepMutation = (programID: number) => {
         name: data.name,
       }),
   });
-};
