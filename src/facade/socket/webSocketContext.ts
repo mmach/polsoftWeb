@@ -2,7 +2,9 @@ import { useAtom, useSetAtom } from "jotai";
 import React, { useEffect } from "react";
 import useWebSocket from "react-use-websocket";
 import { historyAtom } from "src/pages/programs/runProgram/store";
+
 import { currentStepAtom } from "src/sections/programs/diagram/store";
+
 import { WebSocketMessageType } from "src/types/program/programType";
 
 type Prop = {
@@ -20,7 +22,6 @@ export const WebsocketContext = ({ children, workId }: Prop) => {
 
     useEffect(() => {
         if (lastMessage !== null) {
-            console.log(lastMessage)
             try {
                 const obj = JSON.parse(lastMessage.data) as WebSocketMessageType
                 console.log(obj);
@@ -35,7 +36,7 @@ export const WebsocketContext = ({ children, workId }: Prop) => {
             setCurrentStep(null)
             setHistoryAtom([])
         }
-    }, [lastMessage, workId, setCurrentStep]);
+    }, [lastMessage, workId, setCurrentStep, setHistoryAtom, history]);
 
     return children
 

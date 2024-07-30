@@ -17,11 +17,9 @@ import { useNavigationConfig } from 'src/hooks/use-navigation-config';
 import { bgBlur } from 'src/theme/css';
 
 import Logo from 'src/components/logo';
-import Label from 'src/components/label';
 import Iconify from 'src/components/iconify';
 
 import NavMobile from './nav/mobile';
-import NavDesktop from './nav/desktop';
 import { HEADER } from '../config-layout';
 import HeaderShadow from '../common/header-shadow';
 
@@ -47,23 +45,7 @@ export default function Header({ headerOnDark }: Props) {
       <Box sx={{ lineHeight: 0, position: 'relative' }}>
         <Logo />
 
-        <Link href="https://zone-docs.vercel.app/changelog" target="_blank" rel="noopener">
-          <Label
-            color="info"
-            sx={{
-              ml: 0.5,
-              px: 0.5,
-              top: -14,
-              left: 60,
-              height: 20,
-              fontSize: 11,
-              cursor: 'pointer',
-              position: 'absolute',
-            }}
-          >
-            v2.4.0
-          </Label>
-        </Link>
+        <Link href="https://zone-docs.vercel.app/changelog" target="_blank" rel="noopener" />
       </Box>
 
       <>
@@ -74,9 +56,7 @@ export default function Header({ headerOnDark }: Props) {
             height: 1,
             display: { xs: 'none', md: 'flex' },
           }}
-        >
-          <NavDesktop data={navConfig} />
-        </Stack>
+         />
 
         <Box sx={{ flexGrow: { xs: 1, md: 'unset' } }} />
       </>
@@ -92,7 +72,7 @@ export default function Header({ headerOnDark }: Props) {
           display: { xs: 'none', md: 'inline-flex' },
         }}
       >
-        Login
+          Enter App
       </Button>)}
 
       {isUserLogged && (<Button
