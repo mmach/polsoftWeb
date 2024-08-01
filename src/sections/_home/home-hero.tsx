@@ -56,23 +56,23 @@ export default function HomeHero() {
                 textAlign: { xs: 'center', md: 'left' },
               }}
             >
-    <Typography variant="h1">
-      Create Your <br /> Application Today with
-      <Box component="span">
-        <Box component="span" sx={{ color: '#FA541C' }}>
-          {` App`}
-        </Box>
-        <Box component="span" sx={{ color: 'black' }}>
-          {`Zone`}
-        </Box>
-        <Box component="span" sx={{ color: '#FA541C' }}>
-          {`. `}
-        </Box>
-      </Box>
-    </Typography>
+              <Typography variant="h1">
+                Create Your <br /> Application Today with
+                <Box component="span">
+                  <Box component="span" sx={{ color: '#FA541C' }}>
+                    {` App`}
+                  </Box>
+                  <Box component="span" sx={{ color: 'black' }}>
+                    Zone
+                  </Box>
+                  <Box component="span" sx={{ color: '#FA541C' }}>
+                    {`. `}
+                  </Box>
+                </Box>
+              </Typography>
 
               <Typography sx={{ color: 'text.secondary' }}>
-              AppZone is an innovative platform that transforms diagrams into fully functional applications. It provides developers with flexible, customizable, and easy-to-use tools to streamline the app-building process.
+                AppZone is an innovative platform that transforms diagrams into fully functional applications. It provides developers with flexible, customizable, and easy-to-use tools to streamline the app-building process.
               </Typography>
 
               <Button

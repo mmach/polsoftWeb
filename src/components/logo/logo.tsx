@@ -1,7 +1,6 @@
 import { memo } from 'react';
 
 import Link from '@mui/material/Link';
-import { useTheme } from '@mui/material/styles';
 import Box, { BoxProps } from '@mui/material/Box';
 
 import { RouterLink } from 'src/routes/components';
@@ -13,9 +12,6 @@ interface LogoProps extends BoxProps {
 }
 
 function Logo({ single = false, sx }: LogoProps) {
-  const theme = useTheme();
-  const PRIMARY_MAIN = theme.palette.primary.main;
-
   const singleLogo = (
     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 600 250">
     <defs>
