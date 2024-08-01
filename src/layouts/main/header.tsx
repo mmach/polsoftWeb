@@ -74,7 +74,7 @@ export default function Header({ headerOnDark }: Props) {
           display: { xs: 'none', md: 'inline-flex' },
         }}
       >
-        Enter App
+        Login
       </Button>)}
 
       {isUserLogged && (<Button
@@ -127,7 +127,7 @@ export default function Header({ headerOnDark }: Props) {
             height: 1,
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center',
+            justifyContent: 'space-between',
           }}
         >
           {renderContent}

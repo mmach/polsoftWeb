@@ -22,65 +22,24 @@ import { varFade, MotionViewport } from 'src/components/animate';
 
 const CONTENTS = [
   {
-    question: "Is AppZone free for everyone?",
-    answer: "Yes, AppZone offers a free tier that allows users to access basic features. For more advanced tools and capabilities, users can upgrade to one of our premium subscription plans.",
+    question: "Can someone without IT experience create an app?",
+    answer: "Yes, our platform is designed to empower any user to create applications. With a user-friendly interface that is error-resistant, AppZone Builder makes app development accessible to everyone—sky's the limit!.",
   },
   {
-    question: "What programming languages does AppZone support?",
-    answer: "AppZone supports multiple programming languages including Python, TypeScript, Java, and more. This allows developers to work in their preferred coding language.",
+    question: "How long does it take to create an app?",
+    answer: "It takes about as long as it takes to enjoy a good cup of coffee.",
   },
   {
-    question: "Can I use AppZone without any coding experience?",
-    answer: "Absolutely! AppZone is designed to be user-friendly and intuitive, allowing even those with no coding experience to create functional applications using our drag-and-drop interface and pre-built templates.",
+    question: "Can I integrate this with my current API system?",
+    answer: "Yes, it allows to integrate with API, Databases, Events, files, and more. AppZone System is designed to be flexible and compatible with a wide range of systems.",
   },
   {
-    question: "What is included in the AppZone product packages?",
-    answer: "Each AppZone package includes access to our app builder, a library of customizable templates, AI code generation, real-time feedback, integrated development environment (IDE), and automated deployment tools.",
+    question: "How do I launch my program?",
+    answer: "AppZone System provides a comprehensive solution that enables automatic application launching, making the process seamless and efficient.",
   },
   {
-    question: "How can I upgrade my AppZone subscription plan?",
-    answer: "To upgrade your subscription plan, log in to your AppZone account, go to the 'Billing' section, and select 'Upgrade Plan'. Follow the prompts to choose and pay for your desired plan.",
-  },
-  {
-    question: "Are design assets (Figma, Sketch, Adobe XD) included with AppZone?",
-    answer: "Yes, AppZone includes a variety of design assets compatible with Figma, Sketch, and Adobe XD, which you can use to customize your app's design and user interface.",
-  },
-  {
-    question: "Does AppZone support TypeScript for app development?",
-    answer: "Yes, AppZone fully supports TypeScript, enabling developers to write more robust and maintainable code for their applications.",
-  },
-  {
-    question: "Can I use AppZone to build commercial projects like a SaaS?",
-    answer: "Yes, AppZone is ideal for building commercial projects, including SaaS applications. Our platform provides the necessary tools and features to develop, deploy, and manage your commercial apps effectively.",
-  },
-  {
-    question: "How can I request support from AppZone?",
-    answer: "For support, you can visit the 'Support' section on our website, where you can submit a ticket, chat with a support representative, or access our knowledge base for self-help resources.",
-  },
-  {
-    question: "Does AppZone provide analytics and user tracking features?",
-    answer: "Yes, AppZone offers built-in analytics and user tracking features that allow you to monitor your app's performance, user engagement, and other key metrics.",
-  },
-  {
-    question: "Can I integrate third-party services with AppZone?",
-    answer: "Yes, AppZone allows you to integrate various third-party services such as payment gateways, CRM systems, and marketing tools to enhance your app's functionality and user experience.",
-  },
-  {
-    question: "How can I publish my app built with AppZone?",
-    answer: "Once your app is ready, you can publish it directly to the App Store and Google Play through AppZone’s platform. We provide detailed guides and support to assist you through the publishing process.",
-  },
-  {
-    question: "Is there customer support available for AppZone users?",
-    answer: "Yes, we offer comprehensive customer support through various channels, including chat, email, and our support ticket system. Our team is ready to help you with any issues or questions you may have.",
-  },
-  {
-    question: "Can I collaborate with my team on AppZone?",
-    answer: "Absolutely! AppZone supports team collaboration, allowing multiple users to work on the same project simultaneously. You can easily manage roles and permissions within your team.",
-  },
-  {
-    question: "What platforms does AppZone support for app deployment?",
-    answer: "AppZone supports deployment on both iOS and Android platforms. You can build, test, and publish your app to the App Store and Google Play directly from our platform.",
-  },
+    question: "Will this application replace my current IT system?",
+    answer: "No, our focus is on developing solutions that enhance and complement your existing system, adding value without replacement",}
 ];
 
 // ----------------------------------------------------------------------
@@ -179,7 +138,7 @@ export default function HomeFAQs() {
                 size="large"
                 color="inherit"
                 variant="contained"
-                href="mailto:support@minimals.cc?subject=[Feedback] from Customer"
+                href="mailto:support@appzone.io"
               >
                 Contact us
               </Button>
